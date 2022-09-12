@@ -16,6 +16,7 @@
 **カリキュラム外の技術**
 ****
 * geocoder（Google Mapの活用）
+* Active Storage
 <br>
 
 **実行手順**
@@ -41,7 +42,7 @@ https://docs.google.com/spreadsheets/d/1sOg2eGdqihjT57-3wPAyFAeE2SoGIXclCDoSNft2
 
 **ワイヤーフレーム**
 ****
-https://onl.la/dus2hVG
+https://onl.la/XX3Jj3y
 <br>
 
 **ER図**
