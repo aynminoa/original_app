@@ -1,0 +1,27 @@
+<p>
+  <strong>Name:</strong>
+  <%= @spot.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @spot.address %>
+</p>
+
+<p>
+  <strong>Visited on:</strong>
+  <%= @spot.visited_on %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @spot.url %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @spot.comment %>
+</p>
+
+<%= link_to 'Edit', edit_spot_path(@spot) %> |
+<%= link_to 'Back', spots_path %>
