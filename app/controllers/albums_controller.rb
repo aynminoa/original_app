@@ -23,7 +23,8 @@ class AlbumsController < ApplicationController
   # POST /albums or /albums.json
   def create
     @album = Album.new(album_params)
-
+    # @album = current_user.albums.build(album_params)
+    # binding.pry
     respond_to do |format|
       if @album.save
         format.html { redirect_to album_url(@album), notice: "Album was successfully created." }
@@ -66,6 +67,6 @@ class AlbumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:title, :visited_on)
+      params.require(:album).permit(:title, :visited_on, :user_id)
     end
 end

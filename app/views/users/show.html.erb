@@ -1,0 +1,32 @@
+<h1>about me</h1>
+
+
+<h3>ユーザー名</h3>
+<%= @user.name %>
+<h3>メールアドレス</h3>
+<%= @user.email %>
+<h3>自己紹介</h3>
+<%= @user.self_introduction %>
+
+<p>
+  <%= link_to "アカウント編集", edit_user_registration_path %>
+</p>
+
+<p>アルバム新規作成</p>
+<%= form_with(model: @album, url: {controller: 'albums', action: 'create' }, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :visited_on %>
+    <%= form.date_select :visited_on, {discard_day: true} %>
+  </div>
+
+  <%= form.hidden_field :user_id, value: @user.id %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
