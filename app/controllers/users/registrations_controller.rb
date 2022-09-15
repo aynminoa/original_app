@@ -15,9 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
   # def update
@@ -41,7 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
   def after_update_path_for(resource)
     # 自分で設定した「マイページ」へのパス
-    users_show_path(current_user)
+    user_path(current_user)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
