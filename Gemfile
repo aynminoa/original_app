@@ -60,3 +60,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'rexml'
 gem 'devise-i18n'
+
+#map
+gem 'dotenv-rails'
+gem 'gon'
+gem 'geocoder'
