@@ -38,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
   def after_update_path_for(resource)
     # 自分で設定した「マイページ」へのパス
     user_path(current_user)
@@ -56,7 +56,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    super(resource)
+    user_path(resource)
   end
 
   # The path used after sign up for inactive accounts.
