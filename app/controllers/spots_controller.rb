@@ -13,15 +13,18 @@ class SpotsController < ApplicationController
   # GET /spots/new
   def new
     @spot = Spot.new
+    @album = Album.find_by(id: params[:album_id])
   end
-
+  
   # GET /spots/1/edit
   def edit
   end
-
+  
   # POST /spots or /spots.json
   def create
     @spot = Spot.new(spot_params)
+    
+    # @spot = @album.spots.build(spot_params)
 
     respond_to do |format|
       if @spot.save
@@ -65,6 +68,6 @@ class SpotsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spot_params
-      params.require(:spot).permit(:name, :address, :visited_on, :url, :comment)
+      params.require(:spot).permit(:name, :address, :visited_on, :url, :comment, :album_id)
     end
 end

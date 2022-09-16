@@ -36,6 +36,8 @@
     <%= form.text_area :comment %>
   </div>
 
+  <%= form.hidden_field :album_id, value: @album.id %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
