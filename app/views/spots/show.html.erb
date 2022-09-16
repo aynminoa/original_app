@@ -23,28 +23,28 @@
   <%= @spot.comment %>
 </p>
 
+<p><strong>場所:</strong></p>
 <script type="text/javascript">
   function initMap() {
-    var test = {lat: <%= @spot.latitude %>, lng: <%= @spot.longitude %>};
-    var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 15,
-              center: test
-              });
-    var transitLayer = new google.maps.TransitLayer();
-    transitLayer.setMap(map);
-    var contentString = '住所：<%= @spot.address %>';
-    var infoindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-    var marker = new google.maps.Marker({
-                  position:test,
-                  map: map,
-                  title: contentString
-                });
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+      center: {
+        lat: gon.spot.latitude,
+        lng: gon.spot.longitude
+      },
+      zoom: 12,
     });
 
+    marker = new google.maps.Marker({
+      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+      position: {
+        lat: gon.spot.latitude,
+        lng: gon.spot.longitude
+      },
+      map: map
+    });
   }
 </script>
 <script
@@ -54,8 +54,8 @@
 ></script>
 <style type="text/css">
   #map {
-    height: 200px;
-    width: 70%;
+    height: 300px;
+    width: 400px;
   }
 </style>
 <div id="map"></div>
