@@ -7,6 +7,8 @@ class AlbumsController < ApplicationController
   end
 
   def show
+    @spots = @album.spots
+    gon.spots = @spots
   end
 
   def new

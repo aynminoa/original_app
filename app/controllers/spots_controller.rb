@@ -7,6 +7,7 @@ class SpotsController < ApplicationController
 
   def show
     gon.spot = @spot
+    @album = Album.find_by(id: params[:album_id])
   end
 
   def new
@@ -15,6 +16,7 @@ class SpotsController < ApplicationController
   end
   
   def edit
+    @album = Album.find_by(id: params[:album_id])
   end
   
   def create
@@ -35,8 +37,10 @@ class SpotsController < ApplicationController
   end
 
   def destroy
+
     @spot.destroy
-      redirect_to spots_url, notice: "Spot was successfully destroyed."
+    @album = Album.find_by(id: params[:album_id])
+      redirect_to album_url(@album.id), notice: "Spot was successfully destroyed."
   end
 
   private
@@ -45,6 +49,6 @@ class SpotsController < ApplicationController
     end
 
     def spot_params
-      params.require(:spot).permit(:name, :address, :visited_on, :url, :comment, :latitude, :longitude, :album_id)
+      params.require(:spot).permit(:name, :address, :visited_on, :url, :comment,:album_id, :latitude, :longitude)
     end
 end

@@ -1,4 +1,4 @@
-<%= form_with(model: spot) do |form| %>
+<%= form_with(model: spot, local:true) do |form| %>
   <% if spot.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
@@ -15,10 +15,11 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
+  
   <div class="field">
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address,size: "40x20", id:"pac-input", onChange:"codeAddress()" %>
+        <div id="map"></div>
   </div>
 
   <div class="field">
@@ -42,3 +43,34 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+  let geocoder
+    let map
+    function initMap() {
+        geocoder = new google.maps.Geocoder()
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: {lat:34.965106 , lng:136.624412},
+            zoom: 12
+        });
+        const input = document.getElementById("pac-input");
+        const autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo("bounds", map);
+    }
+        function codeAddress(){
+            let inputAddress = document.getElementById('pac-input').value;
+
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+                if (status == 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    let marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('該当する結果がありませんでした：' + status);
+                }
+            }); 
+        }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap&libraries=places&v=weekly"defer></script>

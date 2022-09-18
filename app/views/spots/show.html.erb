@@ -25,6 +25,8 @@
 
 <p><strong>場所:</strong></p>
 <script type="text/javascript">
+ let map;
+
   function initMap() {
     geocoder = new google.maps.Geocoder()
 
@@ -60,4 +62,4 @@
 </style>
 <div id="map"></div>
 
-<%= link_to 'Edit', edit_spot_path(@spot) %> | <%= link_to 'Back', spots_path %>
+<%= link_to 'Edit', edit_spot_path(@spot) %> | <%= link_to 'Back', album_path(id: @spot.album_id), data: {"turbolinks" => false} %>
