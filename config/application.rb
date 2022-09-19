@@ -20,6 +20,8 @@ module OriginalApp
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
+    #ActiveStorage上書きしない
+    config.active_storage.replace_on_assign_to_many = false
 
     config.generators do |g|
       g.test_framework :rspec,
@@ -31,4 +33,5 @@ module OriginalApp
                       request_specs: false
     end
   end
+  
 end
