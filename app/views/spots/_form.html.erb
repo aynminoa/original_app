@@ -37,6 +37,25 @@
     <%= form.text_area :comment %>
   </div>
 
+  <div class="field">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
+  <% if spot.images.attached? %>
+    <p>選択済みの画像（削除する画像にチェックをつけてください）</p>
+    <div style="display: flex; flex-wrap: wrap; width: 750px;">
+    <% @spot.images.each do |image| %>
+      <div style="display: flex; margin:5px 5px 5px 0;">
+        <%= form.check_box :image_ids, { multiple: true }, image.id, false %>
+        <label for="user_image_ids_<%= image.id %>" > 
+          <%= image_tag image, size: '100x100' %>
+        </label>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
+
   <%= form.hidden_field :album_id, value: @album.id %>
 
   <div class="actions">
