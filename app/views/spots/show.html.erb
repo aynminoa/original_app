@@ -23,5 +23,43 @@
   <%= @spot.comment %>
 </p>
 
-<%= link_to 'Edit', edit_spot_path(@spot) %> |
-<%= link_to 'Back', spots_path %>
+<p><strong>場所:</strong></p>
+<script type="text/javascript">
+ let map;
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+      center: {
+        lat: gon.spot.latitude,
+        lng: gon.spot.longitude
+      },
+      zoom: 12,
+    });
+
+    marker = new google.maps.Marker({
+      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+      position: {
+        lat: gon.spot.latitude,
+        lng: gon.spot.longitude
+      },
+      map: map
+    });
+  }
+</script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap"
+  async
+  defer
+></script>
+<style type="text/css">
+  #map {
+    height: 300px;
+    width: 400px;
+  }
+</style>
+<div id="map"></div>
+
+<%= link_to 'Edit', edit_spot_path(@spot) %> | <%= link_to 'Back', album_path(id: @spot.album_id), data: {"turbolinks" => false} %>

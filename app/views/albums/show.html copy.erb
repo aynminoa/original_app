@@ -47,11 +47,9 @@
   function initMap() {
     geocoder = new google.maps.Geocoder()
 
-    var mapLatLng = new google.maps.LatLng({lat: markerData[0]['latitude'], lng: markerData[0]['longitude']});
     map = new google.maps.Map(document.getElementById('map'), {
-      center: mapLatLng, 
-      zoom: 13,
-      scrollwheel: true,
+      center: { lat: 35.6585, lng: 139.7486 }, // 東京タワーを中心に表示させている
+      zoom: 5,
     });
 
     // 繰り返し処理でマーカーと吹き出しを複数表示させる
@@ -79,52 +77,19 @@
       // マーカーにクリックイベントを追加
       markerEvent(i);
     }
-    map_adjust('');
   }
-
-  function map_adjust(){
-    var latMin = 90;
-    var latMax = -90;
-    var lngMin = 180;
-    var lngMax = -180;
-    if (markerData.length === 1){
-      geocoder = new google.maps.Geocoder()
-        map = new google.maps.Map(document.getElementById('map'), {
-          // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
-          center: {
-            lat: gon.spot.latitude,
-            lng: gon.spot.longitude
-          },
-        });
-      }else{
-        for (var i = 0; i < markerData.length; i++) {
-          var thisLat = markerData[i]['latitude'];
-          var thisLng = markerData[i]['longitude'];
-          latMin = Math.min(latMin, thisLat);
-          latMax = Math.max(latMax, thisLat);
-          lngMin = Math.min(lngMin, thisLng);
-          lngMax = Math.max(lngMax, thisLng);
-          
-          var min = new google.maps.LatLng(latMin, lngMin);
-          var max = new google.maps.LatLng(latMax, lngMax);
-          var latLngBounds = new google.maps.LatLngBounds(min, max);
-          map.fitBounds(latLngBounds);
-        }
-      }
-    }
   
   // マーカーをクリックしたら吹き出しを表示
   function markerEvent(i) {
     marker[i].addListener('click', function () {
       infoWindow[i].open(map, marker[i]);
     });
-    
   }
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>
 
-<%= link_to 'New Spot', new_spot_path(album_id: @album.id), data: {"turbolinks" => false} %>
+<%= link_to 'New Spot', new_spot_path(album_id: @album.id) %>
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Destroy', @album, method: :delete, data: { confirm: 'Are you sure?' } %>|
-<%= link_to 'Back', albums_path, data: {"turbolinks" => false} %>
+<%= link_to 'Back', albums_path %>
