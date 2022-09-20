@@ -9,16 +9,19 @@ class AlbumsController < ApplicationController
   def show
     @spots = @album.spots
     gon.spots = @spots
+    @user = User.find_by(id: params[:user_id])
   end
-
+  
   def new
     @album = Album.new
+    @user = User.find_by(id: params[:user_id])
   end
 
   def edit
   end
 
   def create
+    @user = User.find_by(id: params[:user_id])
     @album = Album.new(album_params)
     if @album.save
       redirect_to album_url(@album), notice: "Album was successfully created." 
@@ -36,8 +39,9 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
+    @user = User.find_by(id: params[:user_id])
     @album.destroy
-    redirect_to albums_url, notice: "Album was successfully destroyed." 
+    redirect_to user_path(@user.id), notice: "Album was successfully destroyed." 
   end
 
   private
