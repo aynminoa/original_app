@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="spot_category">
+    <%= form.label :category %>
+    <%= form.select(:category_id, ["ご飯", "スイーツ", "その他"], {prompt: "選択してください"}, required: true) =%>
+  </div>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>

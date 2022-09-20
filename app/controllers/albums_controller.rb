@@ -37,7 +37,8 @@ class AlbumsController < ApplicationController
 
   def destroy
     @album.destroy
-    redirect_to albums_url, notice: "Album was successfully destroyed." 
+    @user = User.find_by(id: params[:user_id])
+      redirect_to user_path(@user.id), notice: "Album was successfully destroyed." 
   end
 
   private
