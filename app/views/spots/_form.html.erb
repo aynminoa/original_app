@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="spot_category">
+    <%= form.label :category %>
+    <%= form.select :category, Spot.categories.keys, {prompt: "選択してください"} %>
+  </div>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>

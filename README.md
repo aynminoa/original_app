@@ -47,7 +47,7 @@ https://onl.la/XX3Jj3y
 
 **ER図**
 ****
-![ERD](images/erd.png)
+![ERD](images/erd_rev.png)
 <br>
 
 **画面遷移図**

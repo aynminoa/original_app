@@ -5,4 +5,6 @@ class Spot < ApplicationRecord
 
   #ActiveStorage
   has_many_attached :images
+
+  enum category: { 食事: 0, スイーツ: 1, その他: 2 }
 end
