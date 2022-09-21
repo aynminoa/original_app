@@ -7,5 +7,6 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :albums, dependent: :destroy
+  #ActiveStorage
   has_one_attached :image
 end
