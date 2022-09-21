@@ -13,7 +13,7 @@
 
   <div class="spot_category">
     <%= form.label :category %>
-    <%= form.select(:category, ["ご飯", "スイーツ", "その他"], {prompt: "選択してください"}) =%>
+    <%= form.select :category, Spot.categories.keys, {prompt: "選択してください"} %>
   </div>
 
   <div class="field">

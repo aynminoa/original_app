@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_20_081639) do
+ActiveRecord::Schema.define(version: 2022_09_21_045051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,10 +54,8 @@ ActiveRecord::Schema.define(version: 2022_09_20_081639) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.bigint "spot_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["spot_id"], name: "index_categories_on_spot_id"
   end
 
   create_table "spots", force: :cascade do |t|
@@ -71,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_09_20_081639) do
     t.bigint "album_id", null: false
     t.float "latitude"
     t.float "longitude"
+    t.integer "category", null: false
     t.index ["album_id"], name: "index_spots_on_album_id"
   end
 
@@ -97,6 +96,5 @@ ActiveRecord::Schema.define(version: 2022_09_20_081639) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "albums", "users"
-  add_foreign_key "categories", "spots"
   add_foreign_key "spots", "albums"
 end
