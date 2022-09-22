@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorites, only: %i[create destroy]
   resources :tags
   resources :spots
   devise_for :users, controllers: { 

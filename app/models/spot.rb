@@ -2,7 +2,7 @@ class Spot < ApplicationRecord
   belongs_to :album
   has_many :spot_tags, dependent: :destroy
   has_many :tags, through: :spot_tags
-  has_many :favorites, dependent: :destory
+  has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
   #ActiveStorage
   has_many_attached :images

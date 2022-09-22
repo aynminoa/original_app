@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :albums, dependent: :destroy
-  has_many :favorites, dependent: :destory
+  has_many :favorites, dependent: :destroy
   #ActiveStorage
   has_one_attached :image
 end

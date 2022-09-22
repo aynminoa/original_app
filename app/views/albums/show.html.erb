@@ -33,7 +33,7 @@
           <%= tag.name %>
           <% end %>
         </td>
-        <td><%= link_to 'Show', spot, data: {"turbolinks" => false} %></td>
+        <td><%= link_to 'Show', spot_path(spot, user_id: current_user.id), data: {"turbolinks" => false} %></td>
         <td><%= link_to 'Edit', edit_spot_path(spot, album_id: @album.id) %></td>
         <td><%= link_to 'Destroy', spot_path(spot, album_id: @album.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

@@ -1,3 +1,11 @@
+<% unless @spot.album.user_id == current_user.id %>
+<% if @favorite.present? %>
+    <p><%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id, id: @spot.id), method: :delete %></p>
+  <% else %>
+    <p><%= link_to 'お気に入りする', favorites_path(spot_id: @spot.id), method: :post %></p>
+  <% end %>
+<% end %>
+
 <p>
   <strong>Tag:</strong>
   <% @spot.tags.each do |tag| %>
