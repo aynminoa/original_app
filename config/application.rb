@@ -24,6 +24,12 @@ module OriginalApp
     config.active_storage.replace_on_assign_to_many = false
 
     config.generators do |g|
+      g.assets false
+      g.helper false
+      g.jbuilder false
+    end
+
+    config.generators do |g|
       g.test_framework :rspec,
                       model_specs: true,
                       view_specs: false,
