@@ -10,6 +10,8 @@ class AlbumsController < ApplicationController
     @spots = @album.spots
     gon.spots = @spots
     @user = User.find_by(id: params[:user_id])
+
+    @spots = @spots.joins(:tags).where(tags: { id: params[:tag_id] }) if params[:tag_id].present?
   end
   
   def new

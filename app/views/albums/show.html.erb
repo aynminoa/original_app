@@ -8,6 +8,11 @@
   <%= @album.visited_on.strftime("%Y年%m月") %>
 </p>
 
+<%= form_with url: album_path(@album), method: :get, local: true do |form| %>
+  <%= form.select("tag_id", Tag.pluck(:name, :id), { include_blank: true }) %>
+  <%= form.submit 'Search', name: nil %>
+<% end %>
+
 <table>
   <thead>
     <tr>
