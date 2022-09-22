@@ -8,11 +8,17 @@
   <%= @album.visited_on.strftime("%Y年%m月") %>
 </p>
 
+<%= form_with url: album_path(@album), method: :get, local: true do |form| %>
+  <%= form.select("tag_id", Tag.pluck(:name, :id), { include_blank: true }) %>
+  <%= form.submit 'Search', name: nil %>
+<% end %>
+
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Category</th>
+      <th>Tags</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +28,11 @@
       <tr>
         <td><%= spot.name %></td>
         <td><%= spot.category %></td>
+        <td>
+          <% spot.tags.each do |tag| %>
+          <%= tag.name %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', spot, data: {"turbolinks" => false} %></td>
         <td><%= link_to 'Edit', edit_spot_path(spot, album_id: @album.id) %></td>
         <td><%= link_to 'Destroy', spot_path(spot, album_id: @album.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

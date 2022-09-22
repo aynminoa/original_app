@@ -1,4 +1,11 @@
 <p>
+  <strong>Tag:</strong>
+  <% @spot.tags.each do |tag| %>
+  <%= tag.name %>
+  <% end %>
+</p>
+
+<p>
   <strong>Category:</strong>
   <%= @spot.category %>
 </p>

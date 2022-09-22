@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_21_045051) do
+ActiveRecord::Schema.define(version: 2022_09_22_025709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2022_09_21_045051) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "spot_tags", force: :cascade do |t|
+    t.bigint "spot_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["spot_id"], name: "index_spot_tags_on_spot_id"
+    t.index ["tag_id"], name: "index_spot_tags_on_tag_id"
+  end
+
   create_table "spots", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -71,6 +80,12 @@ ActiveRecord::Schema.define(version: 2022_09_21_045051) do
     t.float "longitude"
     t.integer "category", null: false
     t.index ["album_id"], name: "index_spots_on_album_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -96,5 +111,7 @@ ActiveRecord::Schema.define(version: 2022_09_21_045051) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "albums", "users"
+  add_foreign_key "spot_tags", "spots"
+  add_foreign_key "spot_tags", "tags"
   add_foreign_key "spots", "albums"
 end

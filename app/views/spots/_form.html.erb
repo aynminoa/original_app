@@ -11,9 +11,13 @@
     </div>
   <% end %>
 
-  <div class="spot_category">
+  <div class="field">
     <%= form.label :category %>
     <%= form.select :category, Spot.categories.keys, {prompt: "選択してください"} %>
+  </div>
+
+  <div class="field check_boxies">
+    <p><%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %></p>
   </div>
 
   <div class="field">
