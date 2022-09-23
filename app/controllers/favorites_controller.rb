@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = current_user.favorites.find_by(id: params[:id]).destroy
+    favorite = current_user.favorites.find_by(id: params[:favorite_id]).destroy
     redirect_to spot_path, notice: "#{favorite.spot.album.user.name}さんのspotをお気に入り解除しました"
   end
 end
