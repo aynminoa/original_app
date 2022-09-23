@@ -8,6 +8,7 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     gon.spot = @spot
     @album = Album.find_by(id: params[:album_id])
+    @favorite = current_user.favorites.find_by(spot_id: @spot.id)
   end
 
   def new
