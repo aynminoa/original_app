@@ -12,6 +12,9 @@
   </head>
 
   <body>
+    <% if current_user.try(:admin?) %>
+      <%= link_to "管理者画面", rails_admin_path %>
+    <% end %>
     <% if user_signed_in? %>
       <%= link_to "ユーザ一覧", users_path %>
       <%= link_to "アルバム投稿", albums_path %>
