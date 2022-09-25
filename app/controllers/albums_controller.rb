@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new, edit, update, destroy]
+  before_action :authenticate_user!, only: %i[new edit update ]
+  before_action :ensure_user, except: %i[show]
 
   def index
     @albums = Album.all
@@ -53,7 +54,8 @@ class AlbumsController < ApplicationController
   end
 
   private
-    def album_params
-      params.require(:album).permit(:title, :visited_on, :user_id)
-    end
+  def album_params
+    params.require(:album).permit(:title, :visited_on, :user_id)
+  end
+
 end
