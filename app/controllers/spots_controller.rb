@@ -1,6 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new edit update ]
-  before_action :ensure_user, except: %i[show]
+  before_action :authenticate_user!
 
   def index
     @spots = Spot.all

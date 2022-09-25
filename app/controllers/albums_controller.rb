@@ -1,6 +1,5 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new edit update ]
-  before_action :ensure_user, except: %i[show]
+  before_action :authenticate_user!
 
   def index
     @albums = Album.all
@@ -30,10 +29,11 @@ class AlbumsController < ApplicationController
   def create
     @user = User.find_by(id: params[:user_id])
     @album = Album.new(album_params)
-    if @album.save
+    if @album.user_id == current_user.id
+      @album.save
       redirect_to album_url(@album), notice: "Album was successfully created." 
     else
-      render :new
+      redirect_to request.referer, notice: "権限がありません" 
     end
   end
 

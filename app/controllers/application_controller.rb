@@ -11,12 +11,6 @@ class ApplicationController < ActionController::Base
     users_path
   end
 
-  def ensure_user
-    unless @user == current_user
-      redirect_to request.referer, notice: "権限がありません"
-    end
-  end
-
   protected
   
   def configure_permitted_parameters

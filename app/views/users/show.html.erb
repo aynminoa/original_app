@@ -32,8 +32,10 @@
         <td><%= album.title %></td>
         <td><%= album.visited_on.strftime("%Y年%m月") %></td>
         <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album_path(album, user_id: @album.user_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @album.user == current_user %>
+          <td><%= link_to 'Edit', edit_album_path(album) %></td>
+          <td><%= link_to 'Destroy', album_path(album, user_id: @album.user_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
