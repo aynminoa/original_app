@@ -16,11 +16,13 @@
       <%= link_to "管理者画面", rails_admin_path %>
     <% end %>
     <% if user_signed_in? %>
+      <% unless @user == current_user %>
+        <%= link_to "マイページ", user_path(current_user) %>
+      <% end %>
       <%= link_to "ユーザ一覧", users_path %>
-      <%= link_to "アルバム投稿", albums_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
+      <%= link_to "アカウント登録", new_user_registration_path %>
       <%= link_to "ログイン", new_user_session_path %>
     <% end %>
 
