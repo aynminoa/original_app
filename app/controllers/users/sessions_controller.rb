@@ -7,6 +7,12 @@ class Users::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to users_path, notice: 'ゲストユーザーとしてログインしました。'
   end
+
+  def admin_guest_sign_in
+    user = User.guest_admin
+    sign_in user
+    redirect_to users_path, notice: '管理者ゲストユーザーとしてログインしました。'
+  end
   
   # before_action :configure_sign_in_params, only: [:create]
 
