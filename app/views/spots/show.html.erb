@@ -1,10 +1,22 @@
 <% unless @spot.album.user_id == current_user.id %>
 <% if @favorite.present? %>
-    <p><%= link_to 'お気に入り解除する', favorite_path(favorite_id: @favorite.id), method: :delete %></p>
+    <p><%= link_to favorite_path(favorite_id: @favorite.id, spot_id: @spot.id), {method: :delete} do %>
+    <i class="fas fa-heart fa-lg"></i>
+    <% end %></p>
   <% else %>
-    <p><%= link_to 'お気に入りする', favorites_path(spot_id: @spot.id), method: :post %></p>
+    <p>
+      <%= link_to favorites_path(spot_id: @spot.id), {method: :post} do %>
+      <i class="far fa-heart fa-lg"></i>
+      <% end %>
+    </p>
   <% end %>
 <% end %>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @spot.name %>
+</p>
 
 <p>
   <strong>Tag:</strong>
@@ -16,11 +28,6 @@
 <p>
   <strong>Category:</strong>
   <%= @spot.category %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @spot.name %>
 </p>
 
 <p>
