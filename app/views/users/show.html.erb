@@ -11,6 +11,8 @@
     <strong>Image:</strong>
     <%= image_tag @user.image, size: '100x100' %>
   </p>
+  <% else %>
+  <p>**no picture**</p>
 <% end %>
 <h3>ユーザー名</h3>
 <%= @user.name %>
@@ -42,7 +44,7 @@
   </tbody>
 </table>
 
-<% unless @user == current_user || current_user == guest_user %>
+<% if @user == current_user || current_user == guest_user %>
 <p>アルバム新規作成</p>
 <%= form_with(model: @album, url: {controller: 'albums', action: 'create' }, local: true) do |form| %>
   <div class="field">
