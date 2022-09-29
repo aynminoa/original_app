@@ -1,7 +1,7 @@
 <h1>Users</h1>
 
 <%= form_with(url: albums_path, method: :get, local: true) do |form| %>
-  <p class="mr-3">国またはエリア名で検索</p>
+  <p class="mr-3">国名・エリア名から検索</p>
   <p class="mr-5"><%= form.text_field :title %>
   <%= form.submit '検索', class: "btn btn-outline-dark py-1 mr-5" %></p>
 <% end %>

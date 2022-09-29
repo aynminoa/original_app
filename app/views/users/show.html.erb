@@ -44,7 +44,7 @@
   </tbody>
 </table>
 
-<% if @user == current_user || current_user == guest_user %>
+<% if @user == current_user || @user == guest_user || @user == admin_guest_user %>
 <p>アルバム新規作成</p>
 <%= form_with(model: Album.new, url: {controller: 'albums', action: 'create' }, local: true) do |form| %>
 <% if @album != nil && @album.errors.any? %>
