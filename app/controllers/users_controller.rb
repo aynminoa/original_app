@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @albums = Album.where(user_id: @user.id)
-    @album = @user.albums.build
+    # @album = @user.albums.build
   end
 
   def destroy

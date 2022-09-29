@@ -19,7 +19,7 @@ class SpotsController < ApplicationController
   
   def edit
     @spot = Spot.find(params[:id])
-    @album = Album.find_by(id: params[:album_id])
+    @album = @spot.album
   end
   
   def create
@@ -27,6 +27,7 @@ class SpotsController < ApplicationController
     if @spot.save
       redirect_to spot_url(@spot), notice: "Spot was successfully created."
     else
+      @album = @spot.album
       render :new
     end
   end
