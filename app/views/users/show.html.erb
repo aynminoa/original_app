@@ -31,13 +31,13 @@
   </thead>
 
   <tbody>
-    <% @albums.each do |album| %>
+    <% @user.albums.each do |album| %>
       <tr>
         <td><%= link_to album.title, album %></td>
         <td><%= album.visited_on.strftime("%Y年%m月") %></td>
-        <% if @album.user == current_user %>
+        <% if album.user == current_user %>
           <td><%= link_to 'Edit', edit_album_path(album) %></td>
-          <td><%= link_to 'Destroy', album_path(album, user_id: @album.user_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', album_path(album, user_id: album.user_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -46,7 +46,19 @@
 
 <% if @user == current_user || current_user == guest_user %>
 <p>アルバム新規作成</p>
-<%= form_with(model: @album, url: {controller: 'albums', action: 'create' }, local: true) do |form| %>
+<%= form_with(model: Album.new, url: {controller: 'albums', action: 'create' }, local: true) do |form| %>
+<% if @album != nil && @album.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
+
+      <ul>
+        <% @album.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
