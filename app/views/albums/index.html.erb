@@ -1,5 +1,5 @@
 <% if current_user.try(:admin?) %>
-  <h1>Albums_admin</h1>
+  <h1>Albums</h1>
 <% else %>
   <h1>Albums</h1>
 <% end %>
@@ -7,6 +7,7 @@
 <table>
   <thead>
     <tr>
+      <th>user</th>
       <th>Title</th>
       <th>Visited on</th>
       <th colspan="3"></th>
@@ -16,11 +17,9 @@
   <tbody>
     <% @albums.each do |album| %>
       <tr>
+        <td><%= album.user.name %></td>
         <td><%= album.title %></td>
         <td><%= album.visited_on.strftime("%Y年%m月") %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Album', new_album_path %>
+<%= link_to 'Users index', users_path %>
