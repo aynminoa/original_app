@@ -12,7 +12,8 @@
     <tr>
       <th>image</th>
       <th>name</th>
-      <th>email</th>
+      <th>self introduction</th>
+      <th>albums</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,7 +23,12 @@
       <tr>
         <td><%= image_tag user.image, size: '100x100' if user.image.attached? %></td>
         <td><%= link_to user.name, user %></td>
-        <td><%= user.email %></td>
+        <td><%= user.self_introduction %></td>
+        <td>
+          <% user.albums.each do |album| %>
+            <%= album.title %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
