@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   
   resources :users, only: %i[index show destroy]
   resources :albums
-    resources :tags
-    resources :spots
+  resources :spots
+  resources :tags
 end

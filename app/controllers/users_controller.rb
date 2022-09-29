@@ -2,7 +2,13 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @users = User.where.not(name: "ゲスト").where.not(name: "管理者ゲスト").order(name: :desc)
+    if current_user.name == "ゲスト"
+      @users = User.where.not(name: "管理者ゲスト").order(name: :desc)
+    elsif current_user.name == "管理者ゲスト"
+      @users = User.where.not(name: "ゲスト").order(name: :desc)
+    else
+      @users = User.where.not(name: "管理者ゲスト").where.not(name: "ゲスト").order(name: :desc)
+    end
   end
 
   def show
