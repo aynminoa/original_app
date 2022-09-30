@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'homes#index'
-  resources :favorites, only: %i[create destroy]
+  resources :favorites, only: %i[index create destroy]
   devise_for :users, controllers: { 
     sessions: 'users/sessions',
     registrations: 'users/registrations' }

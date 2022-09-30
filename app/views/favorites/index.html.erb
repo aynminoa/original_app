@@ -1,0 +1,25 @@
+  <h1><%= current_user.name %>さんのお気に入りspot一覧</h1>
+  
+  <table>
+    <% if @favorite_spots.any? %>
+    <thead>
+      <tr>
+        <th>spot</th>
+        <th>album</th>
+        <th>投稿者</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @favorite_spots.each do |spot| %>
+      <tr>
+        <td><%= link_to spot.name, spot %></td>
+        <td><%= link_to spot.album.title, album_path(spot.album) %></td>
+        <td><%= link_to spot.album.user.name, user_path(spot.album.user) %></td>
+      </tr>
+    <% end %>
+    <% else %>
+    お気に入りしたspotはまだありません。
+    <% end %>
+    </tbody>
+  </table>

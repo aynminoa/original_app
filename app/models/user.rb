@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :albums, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_spots, through: :favorites, source: :spot
   #ActiveStorage
   has_one_attached :image
 
