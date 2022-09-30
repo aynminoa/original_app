@@ -29,15 +29,11 @@ class AlbumsController < ApplicationController
   def create
     @user = User.find_by(id: params[:album][:user_id])
     @album = Album.new(album_params)
-    if @album.user_id == current_user.id
       if @album.save
         redirect_to album_path(@album), notice: "Album was successfully created." 
       else
         render template: 'users/show'
       end
-    else
-      redirect_to request.referer, notice: "権限がありません"
-    end
   end
 
   def update
