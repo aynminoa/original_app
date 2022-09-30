@@ -1,5 +1,9 @@
 class FavoritesController < ApplicationController
 
+  def index
+    @favorite_spots = current_user.favorite_spots
+  end
+
   def create
     favorite = current_user.favorites.create(spot_id: params[:spot_id])
     show_of_album_or_spot
