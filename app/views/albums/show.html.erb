@@ -36,7 +36,6 @@
 
         <td>
           <div id="spot_<%= spot.id %>">
-          
           <%= render partial: 'favorites/favorite', locals: { spot: spot,
           favorite: current_user.favorites.find_by(spot_id: spot) } %>
         </div>
