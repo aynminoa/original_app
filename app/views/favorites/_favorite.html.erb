@@ -1,0 +1,15 @@
+<% unless spot.album.user == current_user %>
+<% if favorite.present? %>
+<%# if Favorite.find_by(user_id: current_user.id, spot_id: spot.id).present? %>
+<%# binding.pry %>
+    <p><%= link_to favorite_path(id: favorite.id, spot_id: spot.id), method: :delete, remote: true do %>
+    <i class="fas fa-heart fa-lg"></i>
+    <% end %></p>
+  <% else %>
+    <p>
+      <%= link_to favorites_path(spot_id: spot.id), method: :post, remote: true do %>
+      <i class="far fa-heart fa-lg"></i>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>

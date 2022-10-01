@@ -35,19 +35,11 @@
         </td>
 
         <td>
-          <% unless spot.album.user_id == current_user.id %>
-          <% if spot.favorites.find_by(user_id: current_user.id).present? %>
-              <p><%= link_to favorite_path(favorite_id: spot.favorites.find_by(user_id: current_user.id).id, album_id: spot.album_id, album_show: "true"), {method: :delete} do %>
-              <i class="fas fa-heart fa-lg"></i>
-              <% end %></p>
-            <% else %>
-              <p>
-                <%= link_to favorites_path(spot_id: spot.id, id: spot.album_id, album_show: "true"), {method: :post} do %>
-                <i class="far fa-heart fa-lg"></i>
-                <% end %>
-              </p>
-            <% end %>
-          <% end %>
+          <div id="spot_<%= spot.id %>">
+          
+          <%= render partial: 'favorites/favorite', locals: { spot: spot,
+          favorite: current_user.favorites.find_by(spot_id: spot) } %>
+        </div>
         </td>
 
         <% if @album.user == current_user %>

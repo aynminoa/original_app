@@ -1,17 +1,6 @@
-<% unless @spot.album.user_id == current_user.id %>
-<% if @favorite.present? %>
-    <p><%= link_to favorite_path(favorite_id: @favorite.id, spot_id: @spot.id), {method: :delete} do %>
-    <i class="fas fa-heart fa-lg"></i>
-    <% end %></p>
-  <% else %>
-    <p>
-      <%= link_to favorites_path(spot_id: @spot.id), {method: :post} do %>
-      <i class="far fa-heart fa-lg"></i>
-      <% end %>
-    </p>
-  <% end %>
-<% end %>
-
+<div id="spot_<%= @spot.id %>">
+  <%= render partial: 'favorites/favorite', locals: { spot: @spot, favorite: @favorite } %>
+</div>
 
 <p>
   <strong>Name:</strong>
