@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :find_spot
+  before_action :find_spot, only: %i[create destroy]
 
   def index
     @favorite_spots = current_user.favorite_spots

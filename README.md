@@ -42,7 +42,7 @@ https://docs.google.com/spreadsheets/d/1sOg2eGdqihjT57-3wPAyFAeE2SoGIXclCDoSNft2
 
 **ワイヤーフレーム**
 ****
-https://onl.la/XX3Jj3y
+https://docs.google.com/spreadsheets/d/1sOg2eGdqihjT57-3wPAyFAeE2SoGIXclCDoSNft2xIM/edit?usp=sharing
 <br>
 
 **ER図**
@@ -52,7 +52,7 @@ https://onl.la/XX3Jj3y
 
 **画面遷移図**
 ****
-![TD](images/td.png)
+![TD](images/td_rev.png)
 
 
 
