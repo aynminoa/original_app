@@ -1,24 +1,20 @@
-<h2><%= t('.sign_in') %></h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container mx-auto text-center text-sm w-2/3 lg:w-1/4 bg-white mt-14 py-8 rounded-md shadow-md">
+  <h2 class="text-lg sm:text-2xl"><%= t('.sign_in') %></h2>
+  <div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field mt-7">
+      <%= f.label :email, class:"text-left" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "border border-gray-300 rounded mt-1 w-5/6 focus:outline-none focus:ring-1 focus:ring-violet-100" %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit t('.sign_in') %>
+    <div class="field mt-5">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "border border-gray-300 rounded mt-1 w-5/6 focus:outline-none focus:ring-1 focus:ring-violet-100" %>
+    </div>
+    
+    <div class="actions mt-7">
+      <%= f.submit t('.sign_in'), class: "px-3 py-2 rounded-md bg-yellow-300 hover:bg-yellow-400" %>
+    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
