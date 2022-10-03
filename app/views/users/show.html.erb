@@ -1,4 +1,4 @@
-<div class="container mx-auto text-center text-base lg:text-sm w-4/5 lg:w-3/5 bg-white my-14 px-4 py-8 rounded-md shadow-md">
+<div class="container mx-auto text-center text-base lg:text-sm w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
 <h1 class="text-2xl font-semibold mb-5"><%= @user.name %>さんのページ</h1>
 
@@ -22,7 +22,7 @@
   <%= @user.name %>
 </div>
 
-<div class="flex mb-8">
+<div class="flex mb-12">
   <% if @user == current_user %>
     <span class="mr-3"><%= t('.email') %></span>
     <%= @user.email %>
@@ -33,40 +33,40 @@
   <%= @user.name %>さんのアルバム</h3>
 </div>
   
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-5">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
   <% if @user.albums.any? %>
   <% @user.albums.each do |album| %>
-      <div class="h-40 mb-5 box-shadow mx-2 shadow-lg rounded-md text-base lg:text-sm">
+      <div class="h-40 mb-5 mx-2 shadow-lg rounded-md text-base lg:text-sm">
         <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md"></p>
-        <p class="text-base my-3 underline"><%= link_to album.title, album %></p>
+        <p class="text-base my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
         <p class="text-base mb-3"><%= album.visited_on.strftime("%Y年%m月") %></p>
         <p class="flex justify-end space-x-4 pr-5">
           <% if album.user == current_user %>
             <%= link_to edit_album_path(album) do %>
               <i class="fa-regular fa-pen-to-square fa-lg"></i>
             <% end %>
-            <%= link_to album_path(album, user_id: album.user_id), method: :delete, data: { confirm: 'Are you sure?' }  do %>
+            <%= link_to album_path(album, user_id: album.user_id), method: :delete, data: { confirm: 'Are you sure?' } do %>
               <i class="fa-regular fa-trash-can fa-lg"></i>
             <% end %>
           <% end %>
         </p>
       </div>
     <% end %>
-    <% else %>
+  <% else %>
     <p class="text-left">アルバムはまだありません。</p>
-    <% end %>
-  </div>
+  <% end %>
+</div>
+
 
 <% if @user == current_user || @user == guest_user || @user == admin_guest_user %>
   <p class="text-lg font-semibold text-left mb-5"><%= t('.new_album') %></p>
   <%= form_with(model: Album.new, url: {controller: 'albums', action: 'create' }, local: true) do |form| %>
     <% if @album != nil && @album.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
         
         <ul>
           <% @album.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="text-left text-red-500 font-semibold mb-3 "><%= error.full_message %></li>
           <% end %>
         </ul>
       </div>
@@ -75,7 +75,7 @@
     <div class="md:flex">
       <div class="field text-left mb-3 mr-3 lg:mr-6">
         <%= form.label :title, class: "mr-3" %>
-        <%= form.text_field :title, class: "border-b-2 border-yellow-300" %>
+        <%= form.text_field :title, placeholder: t('.input_visited_place'), class: "focus:outline-none border-b-2 border-yellow-300" %>
       </div>
       
       <div class="md:flex mb-8">
@@ -93,7 +93,7 @@
 
 
     <% if @user == current_user %>
-      <p><%= link_to t('.edit_account'), edit_user_registration_path, class: "border-b-2 border-gray-400" %></p>
+      <p><%= link_to t('.edit_account'), edit_user_registration_path, class: "inline-block px-1 border-b-2 border-gray-400" %></p>
     <% end %>
 
   <% end %>

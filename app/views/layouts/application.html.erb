@@ -26,20 +26,24 @@
             <ul class="flex flex-wrap justify-end items-center gap-2 md:gap-6 text-sm">
               <% if current_user.try(:admin?) %>
               <li class="">
+                <i class="fa-solid fa-unlock"></i>
                 <%= link_to t('.admin_page'), rails_admin_path %>
               </li>
               <% end %>
 
               <% if user_signed_in? %>
               <li>
+                <i class="fa-solid fa-location-dot"></i>
                 <%= link_to t('.favorite_spots'), favorites_path %>
               </li>
               <% unless @user == current_user %>
               <li>
+                <i class="fa-regular fa-user"></i>
                 <%= link_to t('.my_page'), user_path(current_user) %>
               </li>
               <% end %>
               <li>
+                <i class="fa-solid fa-list-ul"></i>
                 <%= link_to t('.users'), users_path %>
               </li>
               <li>

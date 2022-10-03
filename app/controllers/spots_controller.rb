@@ -25,7 +25,7 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     if @spot.save
-      redirect_to spot_url(@spot), notice: "Spot was successfully created."
+      redirect_to spot_url(@spot), notice: t('notice.created_spot')
     else
       @album = @spot.album
       render :new
@@ -42,7 +42,7 @@ class SpotsController < ApplicationController
     end
     
     if @spot.update(spot_params)
-      redirect_to spot_url(@spot), notice: "Spot was successfully updated."
+      redirect_to spot_url(@spot), notice: t('notice.updated_spot')
     else
       render :edit
     end
@@ -52,7 +52,7 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     @spot.destroy
     @album = Album.find_by(id: params[:album_id])
-      redirect_to album_url(@album.id), notice: "Spot was successfully destroyed."
+      redirect_to album_url(@album.id), notice: t('notice.destroyed_spot')
   end
 
   private

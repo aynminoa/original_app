@@ -19,7 +19,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        'cyan': "#ADDDD0",
+        'cyan': "#C2DED1",
       },
     },
   },

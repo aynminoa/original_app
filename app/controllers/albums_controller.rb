@@ -30,7 +30,7 @@ class AlbumsController < ApplicationController
     @user = User.find_by(id: params[:album][:user_id])
     @album = Album.new(album_params)
       if @album.save
-        redirect_to album_path(@album), notice: "Album was successfully created." 
+        redirect_to album_path(@album), notice: t('notice.created_album')
       else
         render template: 'users/show'
       end
@@ -39,7 +39,7 @@ class AlbumsController < ApplicationController
   def update
     @album = Album.find(params[:id])
     if @album.update(album_params)
-      redirect_to album_url(@album), notice: "Album was successfully updated." 
+      redirect_to album_url(@album), notice: t('notice.updated_album')
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     @user = User.find_by(id: params[:user_id])
     @album.destroy
-    redirect_to user_path(@user.id), notice: "Album was successfully destroyed." 
+    redirect_to user_path(@user.id), notice: t('notice.destroyed_album')
   end
 
   private

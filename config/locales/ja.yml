@@ -23,6 +23,22 @@ ja:
       title: '旅行先'
       visited_on: '訪問時期'
       new_album: 'アルバム新規作成'
+      input_visited_place: '国・エリア名を入力'
+    index:
+      users: 'トラベラーリスト'
+      title: '旅行先:'
+      input_title: '国名・エリア名を入力'
+      can_search_with_title: '国名・エリア名でアルバムを探す'
+      search: '検索'
+    
+  notice:
+    created_album: アルバムを作成しました！
+    updated_album: アルバムを更新ました！
+    destroyed_album: アルバムを削除ました！
+    created_spot: スポットを作成しました！
+    updated_spot: スポットを更新ました！
+    destroyed_spot: スポットを削除ました！
+
   date:
     abbr_day_names:
     - 日
