@@ -6,8 +6,8 @@ ja:
       user: ユーザ
     attributes:
       album:
-        title: タイトル
-        content: 内容
+        title: 旅行先
+        visited_on: 訪問時期
       user:
         name: 名前
         email: メールアドレス

@@ -13,7 +13,16 @@ ja:
       users: 'ユーザ一覧'
       logout: 'ログアウト'
       favorite_spots: 'お気に入りスポット'
-  
+  users:
+    show:
+      edit_account: 'アカウント情報の編集'
+      user_name: 'トラベラー名'
+      email: 'メールアドレス'
+      self_introduction: 'プロフィール'
+      image: 'プロフィール画像'
+      title: '旅行先'
+      visited_on: '訪問時期'
+      new_album: 'アルバム新規作成'
   date:
     abbr_day_names:
     - 日

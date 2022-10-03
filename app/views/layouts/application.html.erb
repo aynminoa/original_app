@@ -23,7 +23,7 @@
 
         <div class="md:flex md:items-center md:gap-12">
           <nav>
-            <ul class="flex flex-wrap justify-end items-center gap-4 md:gap-6 text-sm">
+            <ul class="flex flex-wrap justify-end items-center gap-2 md:gap-6 text-sm">
               <% if current_user.try(:admin?) %>
               <li class="">
                 <%= link_to t('.admin_page'), rails_admin_path %>
