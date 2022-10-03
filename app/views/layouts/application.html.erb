@@ -11,21 +11,60 @@
     <%= include_gon %>
   </head>
 
-  <body>
-    <% if current_user.try(:admin?) %>
-      <%= link_to "管理者画面", rails_admin_path %>
-    <% end %>
-    <% if user_signed_in? %>
-    <%= link_to "お気に入りspot", favorites_path  %>
-      <% unless @user == current_user %>
-        <%= link_to "マイページ", user_path(current_user) %>
-      <% end %>
-      <%= link_to "ユーザ一覧", users_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "アカウント登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+  <body class="bg-cyan font-body">
+    <header class="bg-white border-b-4 border-yellow-400">
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-24 sm:h-16 items-center justify-between">
+          <div class="flex-1 md:flex md:items-center md:gap-12">
+            <a class="block text-teal-600" href="/">
+              <span>Home</span>
+            </a>
+          </div>
+
+        <div class="md:flex md:items-center md:gap-12">
+          <nav>
+            <ul class="flex flex-wrap justify-end items-center gap-2 md:gap-6 text-sm">
+              <% if current_user.try(:admin?) %>
+              <li class="">
+                <i class="fa-solid fa-unlock"></i>
+                <%= link_to t('.admin_page'), rails_admin_path %>
+              </li>
+              <% end %>
+
+              <% if user_signed_in? %>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <%= link_to t('.favorite_spots'), favorites_path %>
+              </li>
+              <% unless @user == current_user %>
+              <li>
+                <i class="fa-regular fa-user"></i>
+                <%= link_to t('.my_page'), user_path(current_user) %>
+              </li>
+              <% end %>
+              <li>
+                <i class="fa-solid fa-list-ul"></i>
+                <%= link_to t('.users'), users_path %>
+              </li>
+              <li>
+                <%= link_to t('.logout'), destroy_user_session_path, class:"rounded-md bg-gray-200 px-3.5 sm:px-5 py-1.5 sm:py-2.5 text-sm shadow hover:bg-gray-100 transition duration-300", method: :delete %>
+              </li>
+                <% else %>
+              </ul>
+            </nav>
+            
+            <div class="flex items-center gap-4">
+              <div class="sm:flex sm:gap-4">
+                <%= link_to "ログイン", new_user_session_path, class:"rounded-md bg-yellow-300 px-5 py-2.5 text-sm shadow hover:bg-yellow-400 transition duration-300" %>
+                <%= link_to "アカウント登録", new_user_registration_path, class:"rounded-md bg-gray-200 px-5 py-2.5 text-sm shadow hover:opacity-75 transition duration-300" %>
+              <% end %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </header>
 
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
@@ -33,7 +72,15 @@
     <% if alert %>
       <p class="alert alert-error"><%= alert %></p>
     <% end %>
+    <div class="flex flex-col min-h-screen">
 
-    <%= yield %>
+      <%= yield %>
+      
+    </div>
+    <footer class="bg-yellow-300 h-12 flex justify-center items-center">
+      <p class="text-sm">
+        ©2022 cocoitte
+      </p>
+    </footer>
   </body>
 </html>
