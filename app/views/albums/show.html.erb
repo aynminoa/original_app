@@ -1,11 +1,7 @@
-<p>
-  <strong>Title:</strong>
-  <%= @album.title %>
-</p>
+<div class="container mx-auto text-center text-base lg:text-sm w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
 <p>
-  <strong>Visited on:</strong>
-  <%= @album.visited_on.strftime("%Y年%m月") %>
+  <%= @album.user.name %>さんの<%= @album.title %>旅行（<%= @album.visited_on.strftime("%Y年%m月") %>）
 </p>
 
 <%= form_with url: album_path(@album), method: :get, local: true do |form| %>
@@ -51,11 +47,13 @@
 </table>
 
 
-<div id="map">表示できる場所はありません</div>
+<div id="map" class="h-100 w-100">スポットがまだ登録されていません</div>
+
 <style>
   #map{
-    height: 400px;
-    width: 600px;
+    min-height: 270px;
+    min-width: 270px;
+    background-color: #EEEEEE;
 }
 </style>
 
@@ -152,3 +150,5 @@
   <%= link_to 'Destroy', album_path(@album, user_id: current_user.id), method: :delete, data: { confirm: 'Are you sure?' } %>|
 <% end %>
 <%= link_to 'Back', user_path(id: @album.user_id) %>
+
+</div>
