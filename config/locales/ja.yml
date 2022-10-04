@@ -24,12 +24,30 @@ ja:
       visited_on: '訪問時期'
       new_album: 'アルバム新規作成'
       input_visited_place: '国・エリア名を入力'
+      back: '戻る'
     index:
       users: 'トラベラーリスト'
       title: '旅行先:'
       input_title: '国名・エリア名を入力'
-      can_search_with_title: '国名・エリア名でアルバムを探す'
+      search_with_title: '国名・エリア名でアルバムを探す'
+      spot_not_yet_registered: 'スポットがまだ登録されていません'
       search: '検索'
+      back: '戻る'
+  albums:
+    show:
+      trip: '旅行'
+      search_with_tag: 'タグで検索'
+      spot: '場所'
+      category: 'カテゴリ'
+      tag: 'タグ'
+      search: '検索'
+      new_spot: 'スポットを追加'
+      edit_album: 'アルバムを更新'
+      destroy_album: 'アルバムを削除'
+      back: '戻る'
+    edit:
+      editing_album: 'アルバム情報の編集'
+      back: '戻る'
     
   notice:
     created_album: アルバムを作成しました！

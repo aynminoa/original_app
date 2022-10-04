@@ -1,6 +1,6 @@
 <% unless spot.album.user == current_user %>
 <% if favorite.present? %>
-    <p><%= link_to favorite_path(id: favorite.id, spot_id: spot.id), method: :delete, remote: true do %>
+    <p class="sm:pt-1"><%= link_to favorite_path(id: favorite.id, spot_id: spot.id), method: :delete, remote: true do %>
     <i class="fas fa-heart fa-lg"></i>
     <% end %></p>
   <% else %>
