@@ -11,21 +11,21 @@
       <div>**no picture**</div>
   <% end %>
   <div class="flex mb-4 text-left">
-    <div class="flex-none mr-3"><%= t('.self_introduction') %></div>
-    <div class="flex-auto break-all">
+    <p class="flex-none mr-3"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.self_introduction') %></span></p>
+    <p class="flex-auto break-all">
       <%= @user.self_introduction %>
-    </div>
+    </p>
   </div>
 
-  <div class="flex mb-4">
-    <span class="mr-3"><%= t('.user_name') %></span>
-    <%= @user.name %>
+  <div class="flex mb-4 text-left">
+    <p class="flex-none mr-3"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.user_name') %></span></p>
+    <p class="flex-auto"><%= @user.name %></p>
   </div>
 
-  <div class="flex mb-12">
+  <div class="flex mb-12 text-left">
     <% if @user == current_user %>
-      <span class="mr-3"><%= t('.email') %></span>
-      <%= @user.email %>
+      <p class="flex-none mr-3"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-2"><%= t('.email') %></span></p>
+      <p class="flex-auto"><%= @user.email %></p>
     <% end %>
   </div>
 
@@ -38,7 +38,7 @@
     <% @user.albums.each do |album| %>
         <div class="h-40 mb-5 mx-2 shadow-lg rounded-md text-base lg:text-sm">
           <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md"></p>
-          <p class="text-base my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
+          <p class="text-base font-semibold my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
           <p class="text-base mb-3"><i class="fa-solid fa-suitcase-rolling"></i><span class="ml-2"><%= album.visited_on.strftime("%Y年%m月") %></span></p>
           <p class="flex justify-end space-x-4 pr-5">
             <% if album.user == current_user %>

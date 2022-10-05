@@ -48,6 +48,19 @@ ja:
     edit:
       editing_album: 'アルバム情報の編集'
       back: '戻る'
+  spots:
+    show:
+      spot_show: 'スポット情報'
+      name: '名前'
+      category: 'カテゴリ'
+      tag: 'タグ'
+      address: '住所'
+      visited_on: '訪問日'
+      url: 'URL'
+      comment: 'コメント'
+      place: '場所'
+      edit_spot: 'スポットを編集'
+      back: '戻る'
     
   notice:
     created_album: アルバムを作成しました！
@@ -56,6 +69,7 @@ ja:
     created_spot: スポットを作成しました！
     updated_spot: スポットを更新ました！
     destroyed_spot: スポットを削除ました！
+    destroyed_user: ユーザを削除ました！
 
   date:
     abbr_day_names:

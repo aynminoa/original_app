@@ -2,7 +2,9 @@ class AlbumsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-      @albums = Album.where('title ilike ?', "%#{params[:title]}%").where.not(user_id: 5).where.not(user_id: 6)
+      @albums = Album.where('title ilike ?', "%#{params[:title]}%")
+      binding.pry
+    
   end
 
   def show

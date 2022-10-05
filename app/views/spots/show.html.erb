@@ -1,47 +1,53 @@
-<div id="spot_<%= @spot.id %>">
-  <%= render partial: 'favorites/favorite', locals: { spot: @spot, favorite: @favorite } %>
+<div class="container mx-auto text-center text-base lg:text-sm w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
+
+<p class="text-lg font-semibold mb-5"><%= t('.spot_show') %></p>
+
+<div class="text-left">
+  <div id="spot_<%= @spot.id %>">
+    <%= render partial: 'favorites/favorite', locals: { spot: @spot, favorite: @favorite } %>
+  </div>
+
+  <p>
+  <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.name') %></span>
+    <%= @spot.name %>
+  </p>
+
+  <p>
+  <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.tag') %></span>
+    <% @spot.tags.each do |tag| %>
+    <%= tag.name %>
+    <% end %>
+  </p>
+
+  <p>
+    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.category') %></span>
+    <%= @spot.category %>
+  </p>
+
+  <p>
+    <%= @spot.address %></span>
+    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.address') %>
+  </p>
+
+  <p>
+    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.visited_on') %></span>
+    <%= @spot.visited_on %>
+  </p>
+
+  <p>
+    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.url') %></span>
+    <%= link_to @spot.url, @spot.url, class: "underline text-blue-900 hover:opacity-75" %>
+  </p>
+
+  <p>
+    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.comment') %></span>
+    <%= @spot.comment %>
+  </p>
 </div>
-
-<p>
-  <strong>Name:</strong>
-  <%= @spot.name %>
-</p>
-
-<p>
-  <strong>Tag:</strong>
-  <% @spot.tags.each do |tag| %>
-  <%= tag.name %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @spot.category %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @spot.address %>
-</p>
-
-<p>
-  <strong>Visited on:</strong>
-  <%= @spot.visited_on %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @spot.url %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @spot.comment %>
-</p>
 
 <% if @spot.images.attached? %>
 <div style="width: 700px;">
-  <p><strong>Image:</strong></p>
+  <%# <p><strong>Image:</strong></p> %>
   <% @spot.images.each do |image| %>
   <a href="<%= url_for(image) %>">
     <%= image_tag image, width: 100, height: 100 %>
@@ -50,9 +56,13 @@
 </div>
 <% end %>
 
-<p><strong>場所:</strong></p>
+<p>
+  <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.place') %></span>
+</p>
+
+
 <script type="text/javascript">
- let map;
+  let map;
 
   function initMap() {
     geocoder = new google.maps.Geocoder()
@@ -83,10 +93,19 @@
 ></script>
 <style type="text/css">
   #map {
-    height: 300px;
-    width: 400px;
+    min-height: 270px;
+    min-width: 270px;
+    background-color: #EEEEEE;
   }
 </style>
-<div id="map"></div>
+<div id="map" class="h-100 w-100"></div>
 
-<%= link_to 'Edit', edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id) %> | <%= link_to 'Back', album_path(id: @spot.album_id) %>
+<div class="flex flex-col items-center mt-3 w-full gap-3">
+  <%= link_to t('.edit_spot'), edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id), class: "w-2/3 py-2 rounded-md bg-yellow-300 hover:bg-yellow-400" %>
+  <p class="flex">
+    <i class="fa-solid fa-chevron-left"></i>
+    <%= link_to t('.back'), album_path(id: @spot.album_id) %>
+  </p>
+</div>
+
+</div>
