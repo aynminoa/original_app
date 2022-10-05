@@ -49,6 +49,18 @@ ja:
       editing_album: 'アルバム情報の編集'
       back: '戻る'
   spots:
+    _form:
+      name: '名前'
+      category: 'カテゴリ'
+      tag: 'タグ'
+      address: '住所'
+      visited_on: '訪問日'
+      url: 'URL'
+      comment: 'コメント'
+
+    new:
+      new_spot: 'スポット新規作成'
+      back: '戻る'
     show:
       spot_show: 'スポット情報'
       name: '名前'
@@ -60,6 +72,10 @@ ja:
       comment: 'コメント'
       place: '場所'
       edit_spot: 'スポットを編集'
+      back: '戻る'
+    edit:
+      editing_spot: 'スポット情報の編集'
+      show: 'スポット情報に戻る'
       back: '戻る'
     
   notice:

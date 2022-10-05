@@ -10,22 +10,22 @@
     <% else %>
       <div>**no picture**</div>
   <% end %>
-  <div class="flex mb-4 text-left">
-    <p class="flex-none mr-3"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.self_introduction') %></span></p>
-    <p class="flex-auto break-all">
+  <div class="flex flex-col md:flex-row mb-4 text-left">
+    <p class="mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-5"><%= t('.self_introduction') %></span></p>
+    <p class="break-all">
       <%= @user.self_introduction %>
     </p>
   </div>
 
-  <div class="flex mb-4 text-left">
-    <p class="flex-none mr-3"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.user_name') %></span></p>
-    <p class="flex-auto"><%= @user.name %></p>
+  <div class="flex flex-col md:flex-row mb-4 text-left">
+    <p class="mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-5"><%= t('.user_name') %></span></p>
+    <p><%= @user.name %></p>
   </div>
 
-  <div class="flex mb-12 text-left">
+  <div class="flex flex-col md:flex-row mb-12 text-left">
     <% if @user == current_user %>
-      <p class="flex-none mr-3"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-2"><%= t('.email') %></span></p>
-      <p class="flex-auto"><%= @user.email %></p>
+      <p class="mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-2"><%= t('.email') %></span></p>
+      <p><%= @user.email %></p>
     <% end %>
   </div>
 

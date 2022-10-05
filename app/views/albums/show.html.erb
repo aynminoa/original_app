@@ -12,7 +12,7 @@
   <% end %>
 </div>
 
-<table class="text-xs sm:text-sm">
+<table class="text-xs sm:text-sm text-left mb-6">
   <thead>
     <tr>
       <th class="sm:pr-5 pb-2"><span class="border-b-2 border-yellow-300"><%= t('.spot') %></span></th>
@@ -21,10 +21,10 @@
     </tr>
   </thead>
 
-  <tbody class="border-b border-dashed text-left text-xs sm:text-sm">
+  <tbody class="border-b border-dashed text-left text-sm">
     <% @spots.each do |spot| %>
       <tr class="border-b border-dashed">
-        <td class="py-1">
+        <td class="p-1">
           <%= link_to spot.name, spot_path(spot, user_id: current_user.id), class: "underline" %></td>
         <td><%= spot.category %></td>
         <td class="flex flex-col text-xs sm:text-sm">

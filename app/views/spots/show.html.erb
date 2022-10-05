@@ -2,62 +2,63 @@
 
 <p class="text-lg font-semibold mb-5"><%= t('.spot_show') %></p>
 
-<div class="text-left">
-  <div id="spot_<%= @spot.id %>">
-    <%= render partial: 'favorites/favorite', locals: { spot: @spot, favorite: @favorite } %>
+<div id="spot_<%= @spot.id %>" class="text-left ml-2 mb-2">
+  <%= render partial: 'favorites/favorite', locals: { spot: @spot, favorite: @favorite } %>
+</div>
+
+<div class="text-left flex flex-col">
+  <div class="mb-2 md:flex md:flex-row">
+    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.name') %></span></p>
+    <p><%= @spot.name %></p>
   </div>
 
-  <p>
-  <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.name') %></span>
-    <%= @spot.name %>
-  </p>
-
-  <p>
-  <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.tag') %></span>
+  <div class="mb-2 md:flex md:flex-row">
+    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.tag') %></span></p>
     <% @spot.tags.each do |tag| %>
-    <%= tag.name %>
-    <% end %>
-  </p>
+    <p><%= tag.name %></p>
+      <% end %>
+  </div>
 
-  <p>
-    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.category') %></span>
-    <%= @spot.category %>
-  </p>
+  <div class="mb-2 md:flex md:flex-row">
+    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.category') %></span></p>
+    <p><%= @spot.category %></p>
+  </div>
 
-  <p>
-    <%= @spot.address %></span>
-    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.address') %>
-  </p>
+  <div class="mb-2">
+    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.address') %></span></p>
+    <p><%= @spot.address %></p>
+  </div>
 
-  <p>
-    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.visited_on') %></span>
-    <%= @spot.visited_on %>
-  </p>
+  <div class="mb-2 md:flex md:flex-row">
+    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.visited_on') %></span></p>
+    <p><%= @spot.visited_on %></p>
+  </div>
 
-  <p>
-    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.url') %></span>
-    <%= link_to @spot.url, @spot.url, class: "underline text-blue-900 hover:opacity-75" %>
-  </p>
+  <div class="mb-2 md:flex md:flex-row">
+    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.url') %></span></p>
+    <p><%= link_to @spot.url, @spot.url, class: "underline text-blue-900 hover:opacity-75" %></p>
+  </div>
 
-  <p>
-    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.comment') %></span>
-    <%= @spot.comment %>
-  </p>
+  <div class="mb-2 md:flex md:flex-row">
+    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.comment') %></span></p>
+    <p class="break-all"><%= @spot.comment %></p>
+  </div>
 </div>
 
 <% if @spot.images.attached? %>
-<div style="width: 700px;">
-  <%# <p><strong>Image:</strong></p> %>
-  <% @spot.images.each do |image| %>
-  <a href="<%= url_for(image) %>">
-    <%= image_tag image, width: 100, height: 100 %>
-  </a>
-  <% end %>
-</div>
+  <div class="grid grid-cols-1 md:grid-cols-2 mb-5">
+    <% @spot.images.each do |image| %>
+    <div class= "min-h-36 p-2 mx-1 shadow-lg rounded-md text-base lg:text-sm">
+      <img><a href="<%= url_for(image) %>">
+        <%= image_tag image %>
+      </a>
+    </div>
+    <% end %>
+  </div>
 <% end %>
 
-<p>
-  <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.place') %></span>
+<p class="text-left">
+  <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5 mb-10"><%= t('.place') %></span>
 </p>
 
 
@@ -98,11 +99,11 @@
     background-color: #EEEEEE;
   }
 </style>
-<div id="map" class="h-100 w-100"></div>
+<div id="map" class="h-100 w-100 mt-3"></div>
 
 <div class="flex flex-col items-center mt-3 w-full gap-3">
   <%= link_to t('.edit_spot'), edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id), class: "w-2/3 py-2 rounded-md bg-yellow-300 hover:bg-yellow-400" %>
-  <p class="flex">
+  <p>
     <i class="fa-solid fa-chevron-left"></i>
     <%= link_to t('.back'), album_path(id: @spot.album_id) %>
   </p>

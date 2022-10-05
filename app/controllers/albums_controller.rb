@@ -2,9 +2,16 @@ class AlbumsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-      @albums = Album.where('title ilike ?', "%#{params[:title]}%")
-      binding.pry
-    
+    guest = User.guest
+    admin_guest = User.guest_admin
+    @albums = Album.where('title ilike ?', "%#{params[:title]}%")
+    if current_user == admin_guest
+      @albums = @albums.select{|album| album.user.email != 'guest@example.com'}
+    elsif current_user == guest
+      @albums = @albums.select{|album| album.user.email != 'guest_admin@example.com'}
+    else
+      @albums = @albums.select{|album| album.user.email != 'guest@example.com' && album.user.email != 'guest_admin@example.com'}
+    end
   end
 
   def show
