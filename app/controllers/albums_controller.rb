@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_posted_user, except: %i[new,show]
+  before_action :ensure_posted_user, only: %i[edit]
 
   def index
     guest = User.guest

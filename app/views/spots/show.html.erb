@@ -102,7 +102,9 @@
 <div id="map" class="h-100 w-100 mt-3"></div>
 
 <div class="flex flex-col items-center mt-5 w-full gap-3">
-  <%= link_to t('.edit_spot'), edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id), class: "w-2/3 py-2 rounded-md bg-yellow-300 hover:bg-yellow-400" %>
+  <% if current_user.id == @spot.album.user_id %>
+    <%= link_to t('.edit_spot'), edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id), class: "w-2/3 py-2 rounded-md bg-yellow-300 hover:bg-yellow-400" %>
+    <% end %>
   <p>
     <i class="fa-solid fa-chevron-left"></i>
     <%= link_to t('.back'), album_path(id: @spot.album_id) %>

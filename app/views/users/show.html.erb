@@ -73,14 +73,14 @@
       <% end %>
     
       <div class="md:flex">
-        <div class="field text-left mb-3 mr-3 lg:mr-6">
+        <div class="field text-left mb-3 mr-3">
           <%= form.label :title, class: "mr-3" %>
           <%= form.text_field :title, placeholder: t('.input_visited_place'), class: "focus:outline-none border-b-2 border-yellow-300" %>
         </div>
         
-        <div class="md:flex mb-8">
-          <div class="field text-left mb-3 mr-3 lg:mr-6">
-            <%= form.label :visited_on, class:"mr-3" %>
+        <div class="flex flex-row mb-8">
+          <div class="field flex text-left mb-3 mr-3 lg:mr-5">
+            <%= form.label :visited_on, class:"mr-1" %>
             <%= form.date_select :visited_on, {discard_day: true}, class: "border-2 border-yellow-300 rounded-md" %>
           </div>
           <div class="actions">

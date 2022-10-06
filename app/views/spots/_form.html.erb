@@ -1,11 +1,9 @@
 <%= form_with(model: spot, local:true) do |form| %>
   <% if spot.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
-
-      <ul>
+      <ul class="mb-3">
         <% spot.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="text-left text-sm text-red-500 font-semibold"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
@@ -29,7 +27,7 @@
 
   <div class="field mb-2">
     <%= form.label :name, class: "mr-1" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "mt-1 border-2 border-yellow-300 rounded-md focus:outline-none" %>
   </div>
   
   <div class="field mb-2">
