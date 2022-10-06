@@ -5,9 +5,6 @@ ja:
       spot: スポット
       user: ユーザ
     attributes:
-      album:
-        title: 旅行先
-        visited_on: 訪問時期
       user:
         name: 名前
         email: メールアドレス
@@ -15,3 +12,13 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+      album:
+        title: 旅行先
+        visited_on: 訪問時期
+      spot:
+        category: カテゴリ
+        name: 名前
+        address: 住所
+        visited_on: 訪問日
+        url: URL
+        comment: コメント
