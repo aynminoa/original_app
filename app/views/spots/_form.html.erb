@@ -11,43 +11,50 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.select :category, Spot.categories.keys, {prompt: "選択してください"} %>
+  <div class="field text-left mb-2">
+    <%= form.label :category, class: "mr-1" %>
+    <%= form.select :category, Spot.categories.keys, {prompt: "選択してください"}, class: "mx-auto w-2/3 mt-2 border-2 border-yellow-300 rounded-md focus:outline-none" %>
   </div>
 
-  <div class="field check_boxies">
-    <p><%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %></p>
+  <div class="text-left flex flex-col">
+  <div class="field check_boxies mb-2">
+    <p class="mb-1">tags</p>
+    <p><%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |b| %>
+        <%= b.label class:"flex gap-2" do %>
+        <%=b.check_box + b.text%>
+        <%end%>
+      <%end%>
+    </p>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
+  <div class="field mb-2">
+    <%= form.label :name, class: "mr-1" %>
     <%= form.text_field :name %>
   </div>
   
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address,size: "40x20", id:"pac-input", onChange:"codeAddress()" %>
+  <div class="field mb-2">
+    <%= form.label :address, class: "mr-1" %>
+    <%= form.text_field :address, size: "28x30", id:"pac-input", onChange:"codeAddress()", class: "mt-1 border-2 border-yellow-300 rounded-md focus:outline-none" %>
         <div id="map"></div>
   </div>
 
-  <div class="field">
-    <%= form.label :visited_on %>
-    <%= form.date_field :visited_on %>
+  <div class="field mb-2">
+    <%= form.label :visited_on, class: "mr-1" %>
+    <%= form.date_field :visited_on, class:"border-2 border-yellow-300 rounded-md focus:outline-none" %>
   </div>
 
-  <div class="field">
-    <%= form.label :url %>
-    <%= form.text_field :url %>
+  <div class="field mb-2">
+    <%= form.label :url, class: "mr-1" %>
+    <%= form.text_field :url, class:"border-2 border-yellow-300 rounded-md focus:outline-none" %>
   </div>
 
-  <div class="field">
+  <div class="field mb-2">
     <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment, class: "mt-2 w-full border border-gray-200", rows: "4" %>
   </div>
+</div>
 
   <div class="field">
-    <%= form.label :images %>
     <%= form.file_field :images, multiple: true %>
   </div>
 
@@ -67,8 +74,9 @@
 
   <%= form.hidden_field :album_id, value: album.id %>
 
-  <div class="actions">
-    <%= form.submit %>
+  
+  <div class="inline-block w-2/3 py-2 my-3 rounded-md bg-yellow-300 hover:bg-yellow-400">
+    <%= form.submit class: "bg-transparent" %>
   </div>
 <% end %>
 

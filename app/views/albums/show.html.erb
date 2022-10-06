@@ -1,36 +1,39 @@
-<div class="container mx-auto text-center text-base lg:text-sm w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
+<div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
-<p>
-  <%= @album.user.name %>さんの<%= @album.title %>旅行（<%= @album.visited_on.strftime("%Y年%m月") %>）
+<p class="text-lg lg:text-2xl font-semibold mb-5">
+  <%= @album.user.name %>さんの<%= @album.title %><%= t('.trip') %><br class="sm:hidden">（<%= @album.visited_on.strftime("%Y年%m月") %>）
 </p>
 
-<%= form_with url: album_path(@album), method: :get, local: true do |form| %>
-  <%= form.select("tag_id", Tag.pluck(:name, :id), { include_blank: true }) %>
-  <%= form.submit 'Search', name: nil %>
-<% end %>
+<div class="sm:flex text-left mb-5">
+  <p class="text-xs sm:text-sm pt-2 mr-3"><%= t('.search_with_tag') %></p>
+  <%= form_with url: album_path(@album), method: :get, local: true do |form| %>
+    <%= form.select("tag_id", Tag.pluck(:name, :id), { include_blank: true }, class: "border-2 border-yellow-300 rounded-md mr-2 focus:outline-none") %>
+    <%= form.submit t('.search'), name: nil, class:"px-2 py-1 sm:px-3 sm:py-2 text-sm rounded-md bg-yellow-300 hover:bg-yellow-400" %>
+  <% end %>
+</div>
 
-<table>
+<table class="text-xs sm:text-sm text-left mb-6">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Tags</th>
-      <th colspan="3"></th>
+      <th class="sm:pr-5 pb-2"><span class="border-b-2 border-yellow-300"><%= t('.spot') %></span></th>
+      <th class="sm:pr-5 pb-2"><span class="border-b-2 border-yellow-300"><%= t('.category') %></span></th>
+      <th class="sm:pr-12 pb-2"><span class="border-b-2 border-yellow-300"><%= t('.tag') %></span></th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="border-b border-dashed text-left text-sm lg:text-base">
     <% @spots.each do |spot| %>
-      <tr>
-        <td><%= link_to spot.name, spot_path(spot, user_id: current_user.id) %></td>
+      <tr class="border-b border-dashed">
+        <td class="p-1">
+          <%= link_to spot.name, spot_path(spot, user_id: current_user.id), class: "underline" %></td>
         <td><%= spot.category %></td>
-        <td>
+        <td class="flex flex-col text-xs sm:text-sm">
           <% spot.tags.each do |tag| %>
-          <%= tag.name %>
+          <span class="inline-block pt-1"><%= tag.name %></span>
           <% end %>
         </td>
 
-        <td>
+        <td class="pl-2">
           <div id="spot_<%= spot.id %>">
           <%= render partial: 'favorites/favorite', locals: { spot: spot,
           favorite: current_user.favorites.find_by(spot_id: spot) } %>
@@ -38,8 +41,16 @@
         </td>
 
         <% if @album.user == current_user %>
-          <td><%= link_to 'Edit', edit_spot_path(spot, album_id: @album.id) %></td>
-          <td><%= link_to 'Destroy', spot_path(spot, album_id: @album.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class="px-1 sm:pl-8 pr-2">
+            <%= link_to edit_spot_path(spot, album_id: @album.id) do %>
+            <i class="fa-regular fa-pen-to-square fa-lg"></i>
+            <% end %>
+            </td>
+            <td class="px-1 sm:px-2">
+            <%= link_to spot_path(spot, album_id: @album.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa-regular fa-trash-can fa-lg"></i>
+          <% end %>
+          </td>
         <% end %>
       </tr>
     <% end %>
@@ -47,7 +58,7 @@
 </table>
 
 
-<div id="map" class="h-100 w-100">スポットがまだ登録されていません</div>
+<div id="map" class="h-100 w-100"><%= t('.spot_not_yet_registered') %></div>
 
 <style>
   #map{
@@ -145,10 +156,15 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>
 
 <% if @album.user == current_user %>
-  <%= link_to 'New Spot', new_spot_path(album_id: @album.id) %>
-  <%= link_to 'Edit', edit_album_path(@album) %> |
-  <%= link_to 'Destroy', album_path(@album, user_id: current_user.id), method: :delete, data: { confirm: 'Are you sure?' } %>|
-<% end %>
-<%= link_to 'Back', user_path(id: @album.user_id) %>
+  <div class="flex flex-col mt-4 items-center w-full gap-3">
+    <%= link_to t('.new_spot'), new_spot_path(album_id: @album.id), class: "w-2/3 py-2 rounded-md bg-yellow-300 hover:opacity-75" %>
+    <%= link_to t('.edit_album'), edit_album_path(@album), class: "w-2/3 py-2 rounded-md bg-gray-300 hover:bg-gray-200" %> 
+    <%= link_to t('.destroy_album'), album_path(@album, user_id: current_user.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "w-2/3 py-2 rounded-md bg-gray-300 hover:opacity-75" %>
+  </div>
+  <% end %>
+  <div class="mt-3">
+    <i class="fa-solid fa-chevron-left"></i>
+    <%= link_to t('.back'), user_path(id: @album.user_id), class: "hover:opacity-75" %>
+  </div>
 
 </div>
