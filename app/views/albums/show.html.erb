@@ -1,6 +1,6 @@
-<div class="container mx-auto text-center text-base lg:text-sm w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
+<div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
-<p class="text-lg font-semibold mb-5">
+<p class="text-lg lg:text-2xl font-semibold mb-5">
   <%= @album.user.name %>さんの<%= @album.title %><%= t('.trip') %><br class="sm:hidden">（<%= @album.visited_on.strftime("%Y年%m月") %>）
 </p>
 
@@ -21,7 +21,7 @@
     </tr>
   </thead>
 
-  <tbody class="border-b border-dashed text-left text-sm">
+  <tbody class="border-b border-dashed text-left text-sm lg:text-base">
     <% @spots.each do |spot| %>
       <tr class="border-b border-dashed">
         <td class="p-1">

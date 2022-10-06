@@ -1,6 +1,6 @@
-<div class="container mx-auto text-center text-base lg:text-sm w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
+<div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
-  <h1 class="text-2xl font-semibold mb-5"><%= @user.name %>さんのページ</h1>
+  <h1 class="text-lg lg:text-2xl font-semibold mb-5"><%= @user.name %>さんのページ</h1>
 
 
   <% if @user.image.attached? %>
@@ -36,10 +36,10 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
     <% if @user.albums.any? %>
     <% @user.albums.each do |album| %>
-        <div class="h-40 mb-5 mx-2 shadow-lg rounded-md text-base lg:text-sm">
+        <div class="h-40 mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
           <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md"></p>
-          <p class="text-base font-semibold my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
-          <p class="text-base mb-3"><i class="fa-solid fa-suitcase-rolling"></i><span class="ml-2"><%= album.visited_on.strftime("%Y年%m月") %></span></p>
+          <p class="font-semibold my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
+          <p class=" mb-3"><i class="fa-solid fa-suitcase-rolling"></i><span class="ml-2"><%= album.visited_on.strftime("%Y年%m月") %></span></p>
           <p class="flex justify-end space-x-4 pr-5">
             <% if album.user == current_user %>
               <%= link_to edit_album_path(album) do %>

@@ -1,6 +1,6 @@
-<div class="container mx-auto text-center text-base lg:text-sm w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
+<div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
-<p class="text-lg font-semibold mb-5"><%= t('.spot_show') %></p>
+<p class="text-lg lg:text-2xl font-semibold mb-5"><%= t('.spot_show') %></p>
 
 <div id="spot_<%= @spot.id %>" class="text-left ml-2 mb-2">
   <%= render partial: 'favorites/favorite', locals: { spot: @spot, favorite: @favorite } %>
@@ -101,7 +101,7 @@
 </style>
 <div id="map" class="h-100 w-100 mt-3"></div>
 
-<div class="flex flex-col items-center mt-3 w-full gap-3">
+<div class="flex flex-col items-center mt-5 w-full gap-3">
   <%= link_to t('.edit_spot'), edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id), class: "w-2/3 py-2 rounded-md bg-yellow-300 hover:bg-yellow-400" %>
   <p>
     <i class="fa-solid fa-chevron-left"></i>

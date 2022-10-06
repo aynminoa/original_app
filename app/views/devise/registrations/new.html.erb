@@ -1,5 +1,5 @@
-<div class="container mx-auto text-center text-base lg:text-sm w-2/3 lg:w-1/4 bg-white mt-14 py-5 sm:py-8 rounded-md shadow-md">
-<h2 class="text-lg sm:text-2xl"><%= t('.sign_up') %></h2>
+<div class="container mx-auto text-center text-sm lg:text-base w-2/3 lg:w-1/4 bg-white mt-14 py-5 sm:py-8 rounded-md shadow-md">
+<h2 class="text-lg lg:text-2xl"><%= t('.sign_up') %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
