@@ -8,7 +8,7 @@
 Tag.create!(
   [
     {
-      name: 'マストGO'
+      name: 'マスト'
     },
     {
       name: 'まぁまぁ'

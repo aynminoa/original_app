@@ -1,5 +1,6 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_posted_user, except: %i[new, show]
 
   def index
     @spots = Spot.all
@@ -56,7 +57,16 @@ class SpotsController < ApplicationController
   end
 
   private
-    def spot_params
-      params.require(:spot).permit(:name, :address, :visited_on, :url, :comment, :album_id, :category, :latitude, :longitude, images: [], tag_ids: [])
+  
+  def spot_params
+    params.require(:spot).permit(:name, :address, :visited_on, :url, :comment, :album_id, :category, :latitude, :longitude, images: [], tag_ids: [])
+  end
+
+  def ensure_posted_user
+    @album = Album.find_by(id: params[:album_id])
+    unless current_user == @album.user
+      redirect_to spot_path, notice: t('notice.not_allowed')
     end
+  end
+
 end

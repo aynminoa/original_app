@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_posted_user, except: %i[new,show]
 
   def index
     guest = User.guest
@@ -13,6 +14,11 @@ class AlbumsController < ApplicationController
       @albums = @albums.select{|album| album.user.email != 'guest@example.com' && album.user.email != 'guest_admin@example.com'}
     end
   end
+  
+  def new
+    @album = Album.new
+    @user = User.find_by(id: params[:user_id])
+  end
 
   def show
     @album = Album.find(params[:id])
@@ -24,11 +30,6 @@ class AlbumsController < ApplicationController
     @spots = @spots.joins(:tags).where(tags: { id: params[:tag_id] })
     gon.spots = @spots
     end
-  end
-  
-  def new
-    @album = Album.new
-    @user = User.find_by(id: params[:user_id])
   end
 
   def edit
@@ -64,6 +65,13 @@ class AlbumsController < ApplicationController
   private
   def album_params
     params.require(:album).permit(:title, :visited_on, :user_id)
+  end
+
+  def ensure_posted_user
+    @album = Album.find(params[:id])
+    unless current_user == @album.user
+      redirect_to album_path, notice: t('notice.access_denied')
+    end
   end
 
 end

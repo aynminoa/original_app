@@ -18,7 +18,7 @@
 
   <div class="text-left flex flex-col">
   <div class="field check_boxies mb-2">
-    <p class="mb-1">tags</p>
+    <p class="mb-1">タグ</p>
     <p><%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |b| %>
         <%= b.label class:"flex gap-2" do %>
         <%=b.check_box + b.text%>

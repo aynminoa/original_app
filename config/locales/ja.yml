@@ -49,15 +49,6 @@ ja:
       editing_album: 'アルバム情報の編集'
       back: '戻る'
   spots:
-    _form:
-      name: '名前'
-      category: 'カテゴリ'
-      tag: 'タグ'
-      address: '住所'
-      visited_on: '訪問日'
-      url: 'URL'
-      comment: 'コメント'
-
     new:
       new_spot: 'スポット新規作成'
       back: '戻る'
@@ -82,6 +73,7 @@ ja:
     created_album: アルバムを作成しました！
     updated_album: アルバムを更新ました！
     destroyed_album: アルバムを削除ました！
+    access_denied: 'アクセス権限がありません'
     created_spot: スポットを作成しました！
     updated_spot: スポットを更新ました！
     destroyed_spot: スポットを削除ました！
