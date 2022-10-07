@@ -13,10 +13,7 @@
  *= require_tree .
  *= require_self
  */
-/* 
-.check_boxies p {
-  display: flex;
-} */
+
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";

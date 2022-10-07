@@ -16,7 +16,7 @@ ja:
   users:
     show:
       edit_account: 'アカウント情報の編集'
-      user_name: 'トラベラー名'
+      user_name: 'ユーザ名'
       email: 'メールアドレス'
       self_introduction: 'プロフィール'
       image: 'プロフィール画像'
@@ -26,7 +26,7 @@ ja:
       input_visited_place: '国・エリア名を入力'
       back: '戻る'
     index:
-      users: 'トラベラーリスト'
+      users: 'ユーザ一覧'
       title: '旅行先:'
       input_title: '国名・エリア名を入力'
       search_with_title: '国名・エリア名でアルバムを探す'
