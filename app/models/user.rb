@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :albums, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_spots, through: :favorites, source: :spot
+  has_many :groups
+  has_many :group_users
   #ActiveStorage
   has_one_attached :image
 
