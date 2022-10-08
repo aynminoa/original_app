@@ -5,4 +5,6 @@ class Album < ApplicationRecord
   validates :title, presence: true
   validates :visited_on, presence: true
 
+  scope :published, -> { where(published: true) }
+
 end

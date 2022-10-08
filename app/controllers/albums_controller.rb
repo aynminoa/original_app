@@ -48,8 +48,9 @@ class AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params[:id])
+    @user = @album.user
     if @album.update(album_params)
-      redirect_to album_url(@album), notice: t('notice.updated_album')
+      redirect_to user_path(@user), notice: t('notice.updated_album')
     else
       render :edit
     end
@@ -64,7 +65,7 @@ class AlbumsController < ApplicationController
 
   private
   def album_params
-    params.require(:album).permit(:title, :visited_on, :user_id)
+    params.require(:album).permit(:title, :visited_on, :user_id, :published)
   end
 
   def ensure_posted_user

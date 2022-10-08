@@ -13,8 +13,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @albums = Album.where(user_id: @user.id)
-    # @album = @user.albums.build
+    if current_user == @user
+      @albums = Album.where(user_id: @user.id)
+    else
+      @albums = Album.where(user_id: @user.id).published
+    end
   end
 
   def destroy

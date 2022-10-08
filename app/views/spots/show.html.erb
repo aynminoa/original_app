@@ -13,10 +13,12 @@
   </div>
 
   <div class="mb-2 md:flex md:flex-row">
-    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.tag') %></span></p>
-    <% @spot.tags.each do |tag| %>
-    <p><%= tag.name %></p>
-      <% end %>
+    <p class="mb-1 "><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.tag') %></span></p>
+    <p class="flex flex-row">
+      <% @spot.tags.each do |tag| %>
+      <span class="mr-1 md:mr-2"><%= tag.name %></span>
+        <% end %>
+    </p>
   </div>
 
   <div class="mb-2 md:flex md:flex-row">

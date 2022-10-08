@@ -8,7 +8,7 @@
         <%= image_tag @user.image, size: '100x100' %>
       </div>
     <% else %>
-      <div>**no picture**</div>
+      <div class="bg-gray-100 inline-block p-14 rounded-2xl mb-5">no picture</div>
   <% end %>
   <div class="flex flex-col md:flex-row mb-4 text-left">
     <p class="mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-5"><%= t('.self_introduction') %></span></p>
@@ -35,9 +35,13 @@
     
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
     <% if @user.albums.any? %>
-    <% @user.albums.each do |album| %>
+    <% @albums.each do |album| %>
         <div class="h-40 mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
+          <% unless album.published %>
+          <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md text-xs sm:text-sm text-red-700 flex items-center justify-center">非公開</p>
+          <% else %>
           <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md"></p>
+          <% end %>
           <p class="font-semibold my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
           <p class=" mb-3"><i class="fa-solid fa-suitcase-rolling"></i><span class="ml-2"><%= album.visited_on.strftime("%Y年%m月") %></span></p>
           <p class="flex justify-end space-x-4 pr-5">
@@ -53,7 +57,7 @@
         </div>
       <% end %>
     <% else %>
-      <p class="text-left">アルバムはまだありません。</p>
+      <p class="text-left">まだアルバムがありません。</p>
     <% end %>
   </div>
 
@@ -94,7 +98,7 @@
     <% end %>
   <% end %>
       
-  <div class="flex justify-center mt-6">
+  <div class="flex justify-center mt-6 text-xs sm:text-sm md:text-base">
     <p>
       <i class="fa-solid fa-chevron-left"></i>
       <%= link_to t('.back'), users_path, class: "hover:opacity-75" %>
