@@ -12,7 +12,7 @@
   <% end %>
 </div>
 
-<table class="text-xs sm:text-sm text-left mb-6">
+<table class="text-xs sm:text-sm md:text-base text-left mb-6">
   <thead>
     <tr>
       <th class="sm:pr-5 pb-2"><span class="border-b-2 border-yellow-300"><%= t('.spot') %></span></th>
@@ -21,7 +21,7 @@
     </tr>
   </thead>
 
-  <tbody class="border-b border-dashed text-left text-sm lg:text-base">
+  <tbody class="border-b border-dashed">
     <% @spots.each do |spot| %>
       <tr class="border-b border-dashed">
         <td class="p-1">
@@ -29,7 +29,7 @@
         <td><%= spot.category %></td>
         <td class="flex flex-col text-xs sm:text-sm">
           <% spot.tags.each do |tag| %>
-          <span class="inline-block pt-1"><%= tag.name %></span>
+          <span class="inline-block"><%= tag.name %></span>
           <% end %>
         </td>
 
@@ -82,7 +82,7 @@
     map = new google.maps.Map(document.getElementById('map'), {
       center: mapLatLng, 
       zoom: 13,
-      scrollwheel: true,
+      // scrollwheel: true,
     });
 
     // 繰り返し処理でマーカーと吹き出しを複数表示させる
@@ -156,13 +156,13 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>
 
 <% if @album.user == current_user %>
-  <div class="flex flex-col mt-4 items-center w-full gap-3">
+  <div class="flex flex-col mt-4 items-center w-full gap-3 text-xs sm:text-sm md:text-base">
     <%= link_to t('.new_spot'), new_spot_path(album_id: @album.id), class: "w-2/3 py-2 rounded-md bg-yellow-300 hover:opacity-75" %>
     <%= link_to t('.edit_album'), edit_album_path(@album), class: "w-2/3 py-2 rounded-md bg-gray-300 hover:bg-gray-200" %> 
     <%= link_to t('.destroy_album'), album_path(@album, user_id: current_user.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "w-2/3 py-2 rounded-md bg-gray-300 hover:opacity-75" %>
   </div>
   <% end %>
-  <div class="mt-3">
+  <div class="mt-3 text-xs sm:text-sm md:text-base">
     <i class="fa-solid fa-chevron-left"></i>
     <%= link_to t('.back'), user_path(id: @album.user_id), class: "hover:opacity-75" %>
   </div>
