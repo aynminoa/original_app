@@ -13,7 +13,7 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 mb-5">
     <% @users.each do |user| %>
-    <div class= "min-h-36 p-5 mx-2 shadow-lg rounded-md text-sm">
+    <div class= "min-h-36 p-5 mx-2 my-2 border border-gray-100 shadow-lg rounded-md text-sm">
         <p class="h-14 w-14 md:h-28 md:w-28 mx-auto rounded-full object-contain"><%= image_tag user.image if user.image.attached? %></p>
         <p class="text-base font-semibold mb-2"><%= link_to user.name, user, class:" underline hover:opacity-75" %></p>
         <p class="break-all"><%= user.self_introduction %></p>

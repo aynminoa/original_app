@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2022_10_08_103557) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.boolean "published", default: true, null: false
+    t.boolean "published", default: false, null: false
     t.index ["user_id"], name: "index_albums_on_user_id"
   end
 
