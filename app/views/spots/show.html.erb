@@ -1,6 +1,6 @@
 <div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
-<p class="text-lg lg:text-2xl font-semibold mb-5"><%= t('.spot_show') %></p>
+<p class="text-lg lg:text-2xl font-semibold mb-5"><i class="fa-solid fa-location-dot mr-2"></i><%= t('.spot_show') %></p>
 
 <div id="spot_<%= @spot.id %>" class="text-left ml-2 mb-2">
   <%= render partial: 'favorites/favorite', locals: { spot: @spot, favorite: @favorite } %>
@@ -16,7 +16,7 @@
     <p class="mb-1 "><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.tag') %></span></p>
     <p class="flex flex-row">
       <% @spot.tags.each do |tag| %>
-      <span class="flex items-center justify-center mr-1 md:mr-2 px-2 bg-blue-700 text-white rounded-full"><%= tag.name %></span>
+      <span class="flex items-center justify-center mr-1 md:mr-2 md:mb-1 px-2 md:text-sm bg-blue-700 text-white rounded-full"><%= tag.name %></span>
         <% end %>
     </p>
   </div>
@@ -105,7 +105,8 @@
 
 <div class="flex flex-col items-center mt-5 w-full gap-3 text-xs sm:text-sm md:text-base">
   <% if current_user.id == @spot.album.user_id %>
-    <%= link_to t('.edit_spot'), edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id), class: "w-2/3 py-2 rounded-md bg-yellow-300 hover:bg-yellow-400" %>
+    <%= link_to t('.edit_spot'), edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id), class: "w-2/3 py-2 rounded-md bg-gray-300 hover:opacity-75" %>
+    <%= link_to t('.destroy_spot'), spot_path(@spot, id: @spot.id, album_id: @spot.album_id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "w-2/3 py-2 rounded-md bg-gray-300 hover:opacity-75" %>
     <% end %>
   <p>
     <i class="fa-solid fa-chevron-left"></i>

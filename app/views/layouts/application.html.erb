@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OriginalApp</title>
+    <title>cocoitte</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,9 +17,7 @@
       <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-24 sm:h-16 items-center justify-between">
           <div class="flex-1 md:flex md:items-center md:gap-12">
-            <h1><a href="/">
-              <img src="../../assets/images/logo.png" alt="cocoitte" width="50px" height="50px">
-            </a></h1>
+            <h1 class="w-16 h-14"><%= link_to image_tag("logo.png"), root_path %></h1>
           </div>
 
         <div class="md:flex md:items-center md:gap-12">
@@ -34,7 +32,7 @@
 
               <% if user_signed_in? %>
               <li>
-                <i class="fa-solid fa-location-dot"></i>
+                <i class="far fa-heart fa-lg"></i>
                 <%= link_to t('.favorite_spots'), favorites_path %>
               </li>
               <% unless @user == current_user %>
@@ -68,7 +66,7 @@
     </header>
 
     <% if notice %>
-      <p class="alert alert-notice text-center bg-red-300 text-white" ><%= notice %></p>
+      <p class="alert alert-notice text-center bg-blue-600 text-white" ><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-error"><%= alert %></p>

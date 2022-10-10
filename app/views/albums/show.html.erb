@@ -6,7 +6,7 @@
   <% end %>
 </p>
 <p class="text-lg lg:text-2xl font-semibold mb-5">
-  <%= @album.user.name %>さんの<%= @album.title %><%= t('.trip') %><br class="sm:hidden">（<%= @album.visited_on.strftime("%Y年%m月") %>）
+  <i class="fa-solid fa-suitcase-rolling mr-2"></i><%= @album.user.name %>さんの<%= @album.title %><%= t('.trip') %><br class="sm:hidden">（<%= @album.visited_on.strftime("%Y年%m月") %>）
 </p>
 
 <div class="sm:flex text-left mb-5">
@@ -28,9 +28,9 @@
 
   <tbody class="border-b border-dashed">
     <% @spots.each do |spot| %>
-      <tr class="border-b border-dashed">
+      <tr class="spot_row border-b border-dashed">
         <td class="p-1">
-          <%= link_to spot.name, spot_path(spot, user_id: current_user.id), class: "underline" %></td>
+          <%= link_to spot.name, spot_path(spot, user_id: current_user.id), class: "underline hover:opacity-75" %></td>
         <td><%= spot.category %></td>
         <td class="flex flex-col text-xs sm:text-sm">
           <% spot.tags.each do |tag| %>
@@ -52,7 +52,7 @@
             <% end %>
             </td>
             <td class="px-1 sm:px-2">
-            <%= link_to spot_path(spot, album_id: @album.id), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= link_to spot_path(spot, album_id: @album.id), method: :delete, data: { confirm: '本当に削除しますか？' } do %>
           <i class="fa-regular fa-trash-can fa-lg"></i>
           <% end %>
           </td>

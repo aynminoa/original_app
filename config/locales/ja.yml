@@ -42,7 +42,7 @@ ja:
       tag: 'タグ'
       search: '検索'
       new_spot: 'スポットを追加'
-      edit_album: 'アルバムを更新'
+      edit_album: 'アルバムを編集'
       destroy_album: 'アルバムを削除'
       back: '戻る'
     edit:
@@ -63,6 +63,7 @@ ja:
       comment: 'コメント'
       place: '場所'
       edit_spot: 'スポットを編集'
+      destroy_spot: 'スポットを削除'
       back: '戻る'
     edit:
       editing_spot: 'スポット情報の編集'
