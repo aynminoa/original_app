@@ -7,11 +7,11 @@ class AlbumsController < ApplicationController
     admin_guest = User.guest_admin
     @albums = Album.where('title ilike ?', "%#{params[:title]}%")
     if current_user == admin_guest
-      @albums = @albums.joins(:user).where.not(user: {email: 'guest@example.com'})
+      @albums = @albums.includes(:user).where.not(user: {email: 'guest@example.com'})
     elsif current_user == guest
-      @albums = @albums.joins(:user).where.not(user: {email: 'guest_admin@example.com'})
+      @albums = @albums.includes(:user).where.not(user: {email: 'guest_admin@example.com'})
     else
-      @albums = @albums.joins(:user).where.not(user: {email: 'guest@example.com'}).where.not(user: {email: 'guest_admin@example.com'})
+      @albums = @albums.includes(:user).where.not(user: {email: 'guest@example.com'}).where.not(user: {email: 'guest_admin@example.com'})
     end
   end
   

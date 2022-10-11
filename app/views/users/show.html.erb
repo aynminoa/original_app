@@ -1,6 +1,6 @@
 <div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
-  <h1 class="text-lg lg:text-2xl font-semibold mb-5"><%= @user.name %>さんのページ</h1>
+  <p class="text-lg lg:text-2xl font-semibold mb-5"><%= @user.name %>さんのページ</p>
 
 
   <% if @user.image.attached? %>
@@ -35,12 +35,12 @@
     
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
     <% if @user.albums.any? %>
-    <% @albums.each do |album| %>
+      <% @albums.each do |album| %>
         <div class="h-40 mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
           <% unless album.published %>
-          <p class="h-7 bg-gray-300 rounded-tr-md rounded-tl-md text-xs sm:text-sm flex items-center justify-center">非公開</p>
+            <p class="h-7 bg-gray-300 rounded-tr-md rounded-tl-md text-xs sm:text-sm flex items-center justify-center">非公開</p>
           <% else %>
-          <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md"></p>
+            <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md"></p>
           <% end %>
           <p class="font-semibold my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
           <p class=" mb-3"><i class="fa-solid fa-suitcase-rolling"></i><span class="ml-2"><%= album.visited_on.strftime("%Y年%m月") %></span></p>

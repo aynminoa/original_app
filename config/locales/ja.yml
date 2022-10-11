@@ -12,6 +12,8 @@ ja:
       my_page: 'マイページ'
       users: 'ユーザ一覧'
       logout: 'ログアウト'
+      login: 'ログイン'
+      user_registration: 'アカウント登録'
       favorite_spots: 'お気に入りスポット'
   users:
     show:
