@@ -13,6 +13,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'faker'
+gem 'gimei'
 
 # devise
 gem 'devise'
@@ -35,7 +37,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'launchy'
 end
 
