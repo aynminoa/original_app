@@ -12,11 +12,13 @@ ja:
       my_page: 'マイページ'
       users: 'ユーザ一覧'
       logout: 'ログアウト'
+      login: 'ログイン'
+      user_registration: 'アカウント登録'
       favorite_spots: 'お気に入りスポット'
   users:
     show:
       edit_account: 'アカウント情報の編集'
-      user_name: 'トラベラー名'
+      user_name: 'ユーザ名'
       email: 'メールアドレス'
       self_introduction: 'プロフィール'
       image: 'プロフィール画像'
@@ -26,7 +28,7 @@ ja:
       input_visited_place: '国・エリア名を入力'
       back: '戻る'
     index:
-      users: 'トラベラーリスト'
+      users: 'ユーザ一覧'
       title: '旅行先:'
       input_title: '国名・エリア名を入力'
       search_with_title: '国名・エリア名でアルバムを探す'
@@ -37,12 +39,12 @@ ja:
     show:
       trip: '旅行'
       search_with_tag: 'タグで検索'
-      spot: '場所'
+      spot: '名称'
       category: 'カテゴリ'
       tag: 'タグ'
       search: '検索'
       new_spot: 'スポットを追加'
-      edit_album: 'アルバムを更新'
+      edit_album: 'アルバムを編集'
       destroy_album: 'アルバムを削除'
       back: '戻る'
     edit:
@@ -54,7 +56,7 @@ ja:
       back: '戻る'
     show:
       spot_show: 'スポット情報'
-      name: '名前'
+      name: '名称'
       category: 'カテゴリ'
       tag: 'タグ'
       address: '住所'
@@ -63,6 +65,7 @@ ja:
       comment: 'コメント'
       place: '場所'
       edit_spot: 'スポットを編集'
+      destroy_spot: 'スポットを削除'
       back: '戻る'
     edit:
       editing_spot: 'スポット情報の編集'

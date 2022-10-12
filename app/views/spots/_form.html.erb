@@ -1,11 +1,9 @@
 <%= form_with(model: spot, local:true) do |form| %>
   <% if spot.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
-
-      <ul>
+      <ul class="mb-3">
         <% spot.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="text-left text-sm text-red-500 font-semibold"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
@@ -29,7 +27,7 @@
 
   <div class="field mb-2">
     <%= form.label :name, class: "mr-1" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "mt-1 border-2 border-yellow-300 rounded-md focus:outline-none" %>
   </div>
   
   <div class="field mb-2">
@@ -59,10 +57,10 @@
   </div>
 
   <% if spot.images.attached? %>
-    <p>選択済みの画像（削除する画像にチェックをつけてください）</p>
-    <div style="display: flex; flex-wrap: wrap; width: 750px;">
+    <p>選択済みの画像<br>（削除する画像にチェックをつけてください）</p>
+    <div class= "flex flex-wrap">
     <% @spot.images.each do |image| %>
-      <div style="display: flex; margin:5px 5px 5px 0;">
+      <div class= "flex m-2">
         <%= form.check_box :image_ids, { multiple: true }, image.id, false %>
         <label for="user_image_ids_<%= image.id %>" > 
           <%= image_tag image, size: '100x100' %>
@@ -72,7 +70,7 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :album_id, value: album.id %>
+  <%= form.hidden_field :album_id, value: @album.id %>
 
   
   <div class="inline-block w-2/3 py-2 my-3 rounded-md bg-yellow-300 hover:bg-yellow-400">

@@ -1,17 +1,17 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_posted_user, except: %i[new,show]
+  before_action :ensure_posted_user, only: %i[edit]
 
   def index
     guest = User.guest
     admin_guest = User.guest_admin
     @albums = Album.where('title ilike ?', "%#{params[:title]}%")
     if current_user == admin_guest
-      @albums = @albums.select{|album| album.user.email != 'guest@example.com'}
+      @albums = @albums.includes(:user).where.not(user: {email: 'guest@example.com'})
     elsif current_user == guest
-      @albums = @albums.select{|album| album.user.email != 'guest_admin@example.com'}
+      @albums = @albums.includes(:user).where.not(user: {email: 'guest_admin@example.com'})
     else
-      @albums = @albums.select{|album| album.user.email != 'guest@example.com' && album.user.email != 'guest_admin@example.com'}
+      @albums = @albums.includes(:user).where.not(user: {email: 'guest@example.com'}).where.not(user: {email: 'guest_admin@example.com'})
     end
   end
   
@@ -48,8 +48,9 @@ class AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params[:id])
+    @user = @album.user
     if @album.update(album_params)
-      redirect_to album_url(@album), notice: t('notice.updated_album')
+      redirect_to user_path(@user), notice: t('notice.updated_album')
     else
       render :edit
     end
@@ -64,7 +65,7 @@ class AlbumsController < ApplicationController
 
   private
   def album_params
-    params.require(:album).permit(:title, :visited_on, :user_id)
+    params.require(:album).permit(:title, :visited_on, :user_id, :published)
   end
 
   def ensure_posted_user

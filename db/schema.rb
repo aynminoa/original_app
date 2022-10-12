@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_28_122859) do
+ActiveRecord::Schema.define(version: 2022_10_08_103557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_09_28_122859) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.boolean "published", default: false, null: false
     t.index ["user_id"], name: "index_albums_on_user_id"
   end
 
@@ -65,6 +66,32 @@ ActiveRecord::Schema.define(version: 2022_09_28_122859) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["spot_id"], name: "index_favorites_on_spot_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "group_albums", force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_group_albums_on_album_id"
+    t.index ["group_id"], name: "index_group_albums_on_group_id"
+  end
+
+  create_table "group_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "spot_tags", force: :cascade do |t|
@@ -122,6 +149,11 @@ ActiveRecord::Schema.define(version: 2022_09_28_122859) do
   add_foreign_key "albums", "users"
   add_foreign_key "favorites", "spots"
   add_foreign_key "favorites", "users"
+  add_foreign_key "group_albums", "albums"
+  add_foreign_key "group_albums", "groups"
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
+  add_foreign_key "groups", "users"
   add_foreign_key "spot_tags", "spots"
   add_foreign_key "spot_tags", "tags"
   add_foreign_key "spots", "albums"

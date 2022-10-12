@@ -4,16 +4,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   before_action :ensure_normal_user, only: %i[update destroy]
+  prepend_before_action :require_no_authentication, only: %i[:cancel]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    if current_user.try(:admin?)
+      super
+    else
+      redirect_to new_user_session_path
+    end
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    UserMailer.welcome_email(@user).deliver
+  end
 
   # GET /resource/edit
   def edit
@@ -63,8 +69,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    user_path(resource)
+  # def after_sign_up_path_for(resource)
+  #   user_path(resource)
+  # end
+
+  def sign_up(resource_name, resource)
+    if !current_user.try(:admin?)
+    sign_in(resource_name, resource)
+    end
   end
 
   # The path used after sign up for inactive accounts.
