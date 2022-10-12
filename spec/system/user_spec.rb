@@ -13,18 +13,18 @@ RSpec.describe 'ユーザ管理機能', type: :system do
         expect(page).to have_content 'アカウント登録が完了しました。'
       end
     end
+  end
+  
+  describe 'セッション機能' do
+    let!(:user){FactoryBot.create(:user)}
+    let!(:guest_user){FactoryBot.create(:guest_user)}
+    let!(:guest_admin_user){FactoryBot.create(:guest_admin_user)}
     context 'ユーザがログインせずユーザ一覧画面に飛ぼうとした場合' do
       it 'ログイン画面に遷移する' do
         visit users_path
         expect(current_path).to eq new_user_session_path
       end
     end
-  end
-
-  describe 'セッション機能' do
-    let!(:user){FactoryBot.create(:user)}
-    let!(:guest_user){FactoryBot.create(:guest_user)}
-    let!(:guest_admin_user){FactoryBot.create(:guest_admin_user)}
     context '一般ユーザがログインした場合' do
       it 'ログインができる' do
         visit new_user_session_path

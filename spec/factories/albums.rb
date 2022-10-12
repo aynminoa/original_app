@@ -18,4 +18,10 @@ FactoryBot.define do
     published { true }
   end
 
+  factory :fourth_album, class: Album do
+    title { '東京' }
+    visited_on {'2022-11-01'}
+    published { false }
+  end
+
 end
