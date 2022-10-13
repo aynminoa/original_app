@@ -11,8 +11,10 @@ gem 'webpacker', '~> 5.0'
 # gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.4', require: false
+
+#seed data
 gem 'faker'
 gem 'gimei'
 
@@ -29,6 +31,9 @@ gem 'geocoder'
 #管理者画面
 gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
+
+#aws
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
