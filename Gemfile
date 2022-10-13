@@ -11,8 +11,10 @@ gem 'webpacker', '~> 5.0'
 # gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.4', require: false
+
+#seed data
 gem 'faker'
 gem 'gimei'
 
@@ -30,6 +32,12 @@ gem 'geocoder'
 gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
 
+#aws
+gem "aws-sdk-s3", require: false
+
+# アプリケーションサーバ
+gem 'unicorn' 
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
@@ -38,6 +46,13 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
   gem 'launchy'
+  gem 'capistrano', '3.16.0' # capistranoのツール一式
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
 
 group :development do
