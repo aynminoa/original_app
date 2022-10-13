@@ -324,7 +324,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
-    unicorn (6.1.0)
+    unicorn (5.8.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.9)
@@ -393,7 +393,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   tzinfo-data
-  unicorn
+  unicorn (~> 5.4)
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)

@@ -36,7 +36,7 @@ gem 'cancancan'
 gem "aws-sdk-s3", require: false
 
 # アプリケーションサーバ
-gem 'unicorn' 
+gem "unicorn", "~> 5.4"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
