@@ -31,7 +31,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :amazon
+  config.active_storage.service = :local
 
   config.action_mailer.default_url_options = {  host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
@@ -39,10 +39,10 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     domain: 'gmail.com',
     port: 587,
-    user_name: 'dicayumi@gmail.com',
+    # user_name: 'dicayumi@gmail.com',
     # user_name: Rails.application.credentials.gmail[:user_name],  #Gmailアドレス（credentials.yml.encに記載）
     # password: Rails.application.credentials.gmail[:password],  #アプリパスワード（credentials.yml.encに記載）
-    # user_name: ENV['SEND_MAIL'],
+    user_name: ENV['SEND_MAIL'],
     password: ENV['GMAIL_SPECIFIC_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
