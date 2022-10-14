@@ -42,7 +42,7 @@ Rails.application.configure do
     user_name: 'dicayumi@gmail.com',
     # user_name: Rails.application.credentials.gmail[:user_name],  #Gmailアドレス（credentials.yml.encに記載）
     # password: Rails.application.credentials.gmail[:password],  #アプリパスワード（credentials.yml.encに記載）
-    # user_name: ENV['SEND_MAIL'],
+    user_name: ENV['SEND_MAIL'],
     password: ENV['GMAIL_SPECIFIC_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
