@@ -1,6 +1,9 @@
 # config valid only for current version of Capistrano
 lock '3.16.0'
 
+# 以下を追記
+append :linked_files, 'config/master.key'
+
 # デプロイするアプリケーション名
 set :application, 'original_app'
 
