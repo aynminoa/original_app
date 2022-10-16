@@ -5,22 +5,36 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .error {
-    padding-top: 16%
+    padding-top: 15%
   }
   p{
     text-align: center;
+    margin: 0;
+    line-height: 80px;
   }
-  img{
+  .error-number {
+    font-size: 100px;
+    font-weight: bold;
+    color: blue;
+  }
+  .error-text {
+    font-size: 25px;
+    font-weight: bold;
+    color: blue;
+  }
+  /* img{
     display: block;
     margin: 0 auto;
-  }
+  } */
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/500.html -->
   <div class="error">
-    <img src="/images/500.png">
+    <p class="error-number">500</p>
+    <p class="error-text">internal server error</p>
+    <!-- <img src="/images/500.png"> -->
     <p>Internal Server Error</p>
   </div>
 </body>
