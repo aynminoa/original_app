@@ -41,7 +41,6 @@ class SpotsController < ApplicationController
         image.purge
       end
     end
-    
     if @spot.update(spot_params)
       redirect_to spot_url(@spot), notice: t('notice.updated_spot')
     else
