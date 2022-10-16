@@ -32,7 +32,6 @@ ja:
       title: '旅行先:'
       input_title: '国名・エリア名を入力'
       search_with_title: '国名・エリア名でアルバムを探す'
-      spot_not_yet_registered: 'スポットがまだ登録されていません'
       search: '検索'
       back: '戻る'
   albums:
@@ -71,7 +70,12 @@ ja:
       editing_spot: 'スポット情報の編集'
       show: 'スポット情報に戻る'
       back: '戻る'
-    
+  favorites:
+    index:
+      spot: 'スポット名称'
+      album: 'アルバム名'
+      user: 'ユーザ'
+      tag: 'タグ'
   notice:
     created_album: アルバムを作成しました！
     updated_album: アルバムを更新ました！
