@@ -20,8 +20,8 @@
 <table class="text-xs sm:text-sm md:text-base text-left mb-6">
   <thead>
     <tr>
-      <th class="sm:pr-5 pb-2"><span class="border-b-2 border-yellow-300"><%= t('.spot') %></span></th>
-      <th class="sm:pr-5 pb-2"><span class="border-b-2 border-yellow-300"><%= t('.category') %></span></th>
+      <th class="sm:pr-5 pb-2 w-1/2"><span class="border-b-2 border-yellow-300"><%= t('.spot') %></span></th>
+      <th class="pr-2 sm:pr-5 pb-2"><span class="border-b-2 border-yellow-300"><%= t('.category') %></span></th>
       <th class="sm:pr-12 pb-2"><span class="border-b-2 border-yellow-300"><%= t('.tag') %></span></th>
     </tr>
   </thead>
@@ -29,16 +29,16 @@
   <tbody class="border-b border-dashed">
     <% @spots.each do |spot| %>
       <tr class="spot_row border-b border-dashed">
-        <td class="p-1">
-          <%= link_to spot.name, spot_path(spot, user_id: current_user.id), class: "underline hover:opacity-75" %></td>
-        <td><%= spot.category %></td>
-        <td class="flex flex-col text-xs sm:text-sm">
+        <td class="underline hover:opacity-75 py-1 pr-1 sm:pr-5">
+          <%= link_to spot.name, spot_path(spot, user_id: current_user.id) %></td>
+        <td class="pr-1 sm:pr-5"><%= spot.category %></td>
+        <td class="flex flex-col text-xs sm:text-sm pr-1 sm:pr-5">
           <% spot.tags.each do |tag| %>
           <span class="inline-block"><%= tag.name %></span>
           <% end %>
         </td>
 
-        <td class="pl-2">
+        <td class="pr-1 sm:pr-5">
           <div id="spot_<%= spot.id %>">
           <%= render partial: 'favorites/favorite', locals: { spot: spot,
           favorite: current_user.favorites.find_by(spot_id: spot) } %>
