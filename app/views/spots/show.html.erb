@@ -1,117 +1,118 @@
 <div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
-<p class="text-lg lg:text-2xl font-semibold mb-5"><i class="fa-solid fa-location-dot mr-2"></i><%= t('.spot_show') %></p>
+  <p class="text-lg lg:text-2xl font-semibold mb-5"><i class="fa-solid fa-location-dot mr-2"></i><%= t('.spot_show') %></p>
 
-<div id="spot_<%= @spot.id %>" class="text-left ml-2 mb-2">
-  <%= render partial: 'favorites/favorite', locals: { spot: @spot, favorite: @favorite } %>
-</div>
-
-<div class="text-left flex flex-col">
-  <div class="mb-2 md:flex md:flex-row">
-    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.name') %></span></p>
-    <p><%= @spot.name %></p>
+  <div id="spot_<%= @spot.id %>" class="text-left ml-2 mb-2">
+    <%= render partial: 'favorites/favorite', locals: { spot: @spot, favorite: @favorite } %>
   </div>
 
-  <div class="mb-2 md:flex md:flex-row">
-    <p class="mb-1 "><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.tag') %></span></p>
-    <p class="flex flex-row">
-      <% @spot.tags.each do |tag| %>
-      <span class="flex items-center justify-center mr-1 md:mr-2 md:mb-1 px-2 md:text-sm bg-blue-700 text-white rounded-full"><%= tag.name %></span>
-        <% end %>
+  <div class="text-left flex flex-col">
+    <div class="mb-2 md:flex md:flex-row">
+      <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.name') %></span></p>
+      <p><%= @spot.name %></p>
+    </div>
+
+    <div class="mb-2 md:flex md:flex-row">
+      <p class="mb-1 "><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.tag') %></span></p>
+      <p class="flex flex-row">
+        <% @spot.tags.each do |tag| %>
+        <span class="flex items-center justify-center mr-1 md:mr-2 md:mb-1 px-2 md:text-sm bg-blue-700 text-white rounded-full"><%= tag.name %></span>
+          <% end %>
+      </p>
+    </div>
+
+    <div class="mb-2 md:flex md:flex-row">
+      <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.category') %></span></p>
+      <p><%= @spot.category %></p>
+    </div>
+
+    <div class="mb-2">
+      <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.address') %></span></p>
+      <p><%= @spot.address %></p>
+    </div>
+
+    <div class="mb-2 md:flex md:flex-row">
+      <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.visited_on') %></span></p>
+      <p><%= @spot.visited_on %></p>
+    </div>
+
+    <div class="mb-2 md:flex md:flex-row">
+      <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.url') %></span></p>
+      <p><%= link_to @spot.url, @spot.url, class: "underline text-blue-900 hover:opacity-75", target: '_blank' %></p>
+    </div>
+
+    <div class="mb-2 md:flex md:flex-row">
+      <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.comment') %></span></p>
+      <p class="break-all"><%= @spot.comment %></p>
+    </div>
+  </div>
+
+  <% if @spot.images.attached? %>
+    <div class="grid grid-cols-2 md:grid-cols-3 mb-5">
+      <% @spot.images.each do |image| %>
+      <div class= "min-h-36 p-1 mx-1 shadow-lg rounded-md text-base lg:text-sm border border-gray-100">
+        <img><a href="<%= url_for(image) %>">
+          <%= image_tag image %>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <p class="text-left">
+    <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5 mb-10"><%= t('.place') %></span>
+  </p>
+
+
+  <script type="text/javascript">
+    let map;
+
+    function initMap() {
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+        center: {
+          lat: gon.spot.latitude,
+          lng: gon.spot.longitude
+        },
+        zoom: 12,
+      });
+
+      marker = new google.maps.Marker({
+        // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+        position: {
+          lat: gon.spot.latitude,
+          lng: gon.spot.longitude
+        },
+        map: map
+      });
+    }
+  </script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap"
+    async
+    defer
+  ></script>
+  <style type="text/css">
+    #map {
+      min-height: 270px;
+      min-width: 270px;
+      background-color: #EEEEEE;
+    }
+  </style>
+
+  <div id="map" class="h-100 w-100 mt-3"></div>
+
+  <div class="flex flex-col items-center mt-5 w-full gap-3 text-xs sm:text-sm md:text-base">
+    <% if current_user.id == @spot.album.user_id %>
+      <%= link_to t('.edit_spot'), edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id), class: "w-2/3 py-2 rounded-md bg-gray-300 hover:opacity-75" %>
+      <%= link_to t('.destroy_spot'), spot_path(@spot, id: @spot.id, album_id: @spot.album_id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "w-2/3 py-2 rounded-md bg-gray-300 hover:opacity-75" %>
+    <% end %>
+    <p>
+      <i class="fa-solid fa-chevron-left"></i>
+      <%= link_to t('.back'), album_path(id: @spot.album_id) %>
     </p>
   </div>
-
-  <div class="mb-2 md:flex md:flex-row">
-    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.category') %></span></p>
-    <p><%= @spot.category %></p>
-  </div>
-
-  <div class="mb-2">
-    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.address') %></span></p>
-    <p><%= @spot.address %></p>
-  </div>
-
-  <div class="mb-2 md:flex md:flex-row">
-    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.visited_on') %></span></p>
-    <p><%= @spot.visited_on %></p>
-  </div>
-
-  <div class="mb-2 md:flex md:flex-row">
-    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.url') %></span></p>
-    <p><%= link_to @spot.url, @spot.url, class: "underline text-blue-900 hover:opacity-75", target: '_blank' %></p>
-  </div>
-
-  <div class="mb-2 md:flex md:flex-row">
-    <p class="mb-1"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.comment') %></span></p>
-    <p class="break-all"><%= @spot.comment %></p>
-  </div>
-</div>
-
-<% if @spot.images.attached? %>
-  <div class="grid grid-cols-2 md:grid-cols-3 mb-5">
-    <% @spot.images.each do |image| %>
-    <div class= "min-h-36 p-1 mx-1 shadow-lg rounded-md text-base lg:text-sm border border-gray-100">
-      <img><a href="<%= url_for(image) %>">
-        <%= image_tag image %>
-      </a>
-    </div>
-    <% end %>
-  </div>
-<% end %>
-
-<p class="text-left">
-  <span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5 mb-10"><%= t('.place') %></span>
-</p>
-
-
-<script type="text/javascript">
-  let map;
-
-  function initMap() {
-    geocoder = new google.maps.Geocoder()
-
-    map = new google.maps.Map(document.getElementById('map'), {
-      // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
-      center: {
-        lat: gon.spot.latitude,
-        lng: gon.spot.longitude
-      },
-      zoom: 12,
-    });
-
-    marker = new google.maps.Marker({
-      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
-      position: {
-        lat: gon.spot.latitude,
-        lng: gon.spot.longitude
-      },
-      map: map
-    });
-  }
-</script>
-<script
-  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap"
-  async
-  defer
-></script>
-<style type="text/css">
-  #map {
-    min-height: 270px;
-    min-width: 270px;
-    background-color: #EEEEEE;
-  }
-</style>
-<div id="map" class="h-100 w-100 mt-3"></div>
-
-<div class="flex flex-col items-center mt-5 w-full gap-3 text-xs sm:text-sm md:text-base">
-  <% if current_user.id == @spot.album.user_id %>
-    <%= link_to t('.edit_spot'), edit_spot_path(@spot, id: @spot.id, album_id: @spot.album_id), class: "w-2/3 py-2 rounded-md bg-gray-300 hover:opacity-75" %>
-    <%= link_to t('.destroy_spot'), spot_path(@spot, id: @spot.id, album_id: @spot.album_id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "w-2/3 py-2 rounded-md bg-gray-300 hover:opacity-75" %>
-    <% end %>
-  <p>
-    <i class="fa-solid fa-chevron-left"></i>
-    <%= link_to t('.back'), album_path(id: @spot.album_id) %>
-  </p>
-</div>
 
 </div>

@@ -1,7 +1,6 @@
 <div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md"> 
 
-
-<p class="text-lg lg:text-2xl font-semibold mb-8"><i class="fa-solid fa-magnifying-glass"></i>「<%= "#{params[:title]}" %>」の検索結果</p>
+  <p class="text-lg lg:text-2xl font-semibold mb-8"><i class="fa-solid fa-magnifying-glass"></i>「<%= "#{params[:title]}" %>」の検索結果</p>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
     <% @albums.each do |album| %>
@@ -13,6 +12,5 @@
       </div>
     <% end %>
   </div>
-
 
 </div>

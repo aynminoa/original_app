@@ -20,43 +20,43 @@
             <h1 class="w-16"><%= link_to image_tag(asset_path 'logo.png'), root_path %></h1>
           </div>
 
-        <div class="md:flex md:items-center md:gap-12">
-          <nav>
-            <ul class="flex flex-wrap justify-end items-center gap-2 md:gap-5 text-sm lg:text-base">
-              <% if current_user.try(:admin?) %>
-              <li>
-                <i class="fa-solid fa-unlock"></i>
-                <%= link_to t('.admin_page'), rails_admin_path %>
-              </li>
-              <% end %>
-
-              <% if user_signed_in? %>
-              <li>
-                <i class="far fa-heart"></i>
-                <%= link_to t('.favorite_spots'), favorites_path %>
-              </li>
-              <% unless @user == current_user %>
-              <li>
-                <i class="fa-regular fa-user"></i>
-                <%= link_to t('.my_page'), user_path(current_user) %>
-              </li>
-              <% end %>
-              <li>
-                <i class="fa-solid fa-list-ul"></i>
-                <%= link_to t('.users'), users_path %>
-              </li>
-              <li>
-                <%= link_to t('.logout'), destroy_user_session_path, class:"rounded-md bg-gray-200 px-3.5 sm:px-5 py-1.5 sm:py-2.5 shadow hover:opacity-75 transition duration-300", method: :delete %>
-              </li>
-              <li>
+          <div class="md:flex md:items-center md:gap-12">
+            <nav>
+              <ul class="flex flex-wrap justify-end items-center gap-2 md:gap-5 text-sm lg:text-base">
                 <% if current_user.try(:admin?) %>
-                <%= link_to t('.user_registration'), new_user_registration_path, class:"rounded-md bg-yellow-300 px-3.5 sm:px-5 py-1.5 sm:py-2.5 shadow hover:opacity-75" %>
+                <li>
+                  <i class="fa-solid fa-unlock"></i>
+                  <%= link_to t('.admin_page'), rails_admin_path %>
+                </li>
                 <% end %>
-              </li>
+
+                <% if user_signed_in? %>
+                  <li>
+                    <i class="far fa-heart"></i>
+                    <%= link_to t('.favorite_spots'), favorites_path %>
+                  </li>
+                  <% unless @user == current_user %>
+                  <li>
+                    <i class="fa-regular fa-user"></i>
+                    <%= link_to t('.my_page'), user_path(current_user) %>
+                  </li>
+                  <% end %>
+                  <li>
+                    <i class="fa-solid fa-list-ul"></i>
+                    <%= link_to t('.users'), users_path %>
+                  </li>
+                  <li>
+                    <%= link_to t('.logout'), destroy_user_session_path, class:"rounded-md bg-gray-200 px-3.5 sm:px-5 py-1.5 sm:py-2.5 shadow hover:opacity-75 transition duration-300", method: :delete %>
+                  </li>
+                  <li>
+                    <% if current_user.try(:admin?) %>
+                      <%= link_to t('.user_registration'), new_user_registration_path, class:"rounded-md bg-yellow-300 px-3.5 sm:px-5 py-1.5 sm:py-2.5 shadow hover:opacity-75" %>
+                      <% end %>
+                  </li>
                 <% else %>
               </ul>
             </nav>
-            
+              
             <div class="flex items-center gap-4">
               <div class="sm:flex sm:gap-4">
                 <%= link_to t('.login'), new_user_session_path, class:"rounded-md bg-yellow-300 px-5 py-2.5 text-sm lg:text-base shadow hover:bg-yellow-400 transition duration-300" %>
