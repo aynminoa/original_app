@@ -1,6 +1,6 @@
 <div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
-  <p class="text-lg lg:text-2xl font-semibold mb-5"><%= t('.users') %></p>
+  <p class="text-lg lg:text-2xl font-semibold mb-5"><i class="fa-solid fa-list-ul mr-2"></i><%= t('.users') %></p>
 
   <div class="mb-10">
     <%= form_with(url: albums_path, method: :get, local: true) do |form| %>
