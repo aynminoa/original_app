@@ -15,10 +15,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if current_user == @user
-      @albums = Album.where(user_id: @user.id).order(published: :desc).order(visited_on: :asc)
+      @albums = @user.albums.order(published: :desc).order(visited_on: :asc)
     else
-      @albums = Album.where(user_id: @user.id).published.order(visited_on: :asc)
-      
+      @albums = @user.albums.published.order(visited_on: :asc)
     end
   end
 

@@ -5,7 +5,7 @@ class AlbumsController < ApplicationController
   def index
     guest = User.guest
     admin_guest = User.guest_admin
-    @albums = Album.where('title ilike ?', "%#{params[:title]}%")
+    @albums = Album.where('title ilike ?', "%#{params[:title]}%").order(visited_on: :asc)
     if current_user == admin_guest
       @albums = @albums.includes(:user).where.not(user: {email: 'guest@example.com'})
     elsif current_user == guest
@@ -42,7 +42,12 @@ class AlbumsController < ApplicationController
       if @album.save
         redirect_to album_path(@album), notice: t('notice.created_album')
       else
-        render template: 'users/show'
+        if current_user == @user
+          @albums = @user.albums.order(published: :desc).order(visited_on: :asc)
+        else
+          @albums = @user.albums.published.order(visited_on: :asc)
+        end
+            render 'users/show'
       end
   end
 
