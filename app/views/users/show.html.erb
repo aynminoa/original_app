@@ -1,6 +1,6 @@
 <div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
-  <p class="text-lg lg:text-2xl font-semibold mb-5"><%= @user.name %>さんのページ</p>
+  <p class="text-lg lg:text-2xl font-semibold mb-5"><i class="fa-solid fa-user mr-2"></i><%= @user.name %>さんのページ</p>
 
 
   <% if @user.image.attached? %>
@@ -11,20 +11,20 @@
       <div class="bg-gray-100 inline-block p-8 md:p-14 rounded-2xl mb-5">no picture</div>
   <% end %>
   <div class="flex flex-col md:flex-row mb-4 text-left">
-    <p class="mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-5"><%= t('.self_introduction') %></span></p>
+    <p class="font-semibold mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-5"><%= t('.self_introduction') %></span></p>
     <p class="break-all">
       <%= @user.self_introduction %>
     </p>
   </div>
 
   <div class="flex flex-col md:flex-row mb-4 text-left">
-    <p class="mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-5"><%= t('.user_name') %></span></p>
+    <p class="font-semibold mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-5"><%= t('.user_name') %></span></p>
     <p><%= @user.name %></p>
   </div>
 
   <div class="flex flex-col md:flex-row mb-12 text-left">
     <% if @user == current_user %>
-      <p class="mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-2"><%= t('.email') %></span></p>
+      <p class="font-semibold mr-3 mb-1"><span class="text-sm border-b-2 border-yellow-300 px-1 mr-2"><%= t('.email') %></span></p>
       <p><%= @user.email %></p>
     <% end %>
   </div>

@@ -33,7 +33,6 @@ ja:
       input_title: '国名・エリア名を入力'
       search_with_title: '国名・エリア名でアルバムを探す'
       spot_not_yet_registered: 'スポットがまだ登録されていません'
-      search: '検索'
       back: '戻る'
   albums:
     show:
