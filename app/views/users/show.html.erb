@@ -67,7 +67,6 @@
     <%= form_with(model: Album.new, url: {controller: 'albums', action: 'create' }, local: true) do |form| %>
       <% if @album != nil && @album.errors.any? %>
         <div id="error_explanation">
-          
           <ul>
             <% @album.errors.each do |error| %>
             <li class="text-left text-red-500 font-semibold mb-3 "><%= error.full_message %></li>

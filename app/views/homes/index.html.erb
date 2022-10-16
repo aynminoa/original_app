@@ -1,32 +1,32 @@
 <div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 my-14 px-4 md:px-8 py-8">
 
-<p class="text-2xl sm:text-3xl md:text-5xl font-semibold mb-5 text-white">cocoitteへようこそ！</p>
+  <p class="text-2xl sm:text-3xl md:text-5xl font-semibold mb-5 text-white">cocoitteへようこそ！</p>
 
-<p class="leading-7 mb-10">
-  旅行好きの友人との間で交わされる<br>
-  「どこが美味しかった？」「おススメのお店を教えて」などのやりとり。<br>
-  いろいろシェアしたいけど、一つひとつ思い出して情報を伝えるのは少しめんどう。<br>
-  <span class="tracking-tighter sm:tracking-normal">もっと簡単に伝えられる方法があったらな。</span><br>
-  そんな思いから <span class="border-b-2 border-yellow-300 text-white md:text-lg">cocoitte</span> ができました。
-</p>
-
-<p class="mb-5 text-lg text-white">このアプリを使うと、、、</p>
-<p class="leading-7 mb-5">
-  <span class="text-yellow-300 font-bold">・</span>訪問した複数のスポットを1つのページに表示。このページだけで情報シェアが完結します<br>
-  <span class="text-yellow-300 font-bold">・</span>各スポットで撮った写真のアップロードが可能です<br>
-  <span class="text-yellow-300 font-bold">・</span>リアルな感想をシェアできます<br>
-  <span class="text-yellow-300 font-bold">・</span>自分だけの旅行記録としても使えます<br>
-</p>
-
-<div class="w-28 mx-auto mb-5"><%= image_tag('airplane.png') %></div>
-
-<div class="flex flex-col sm:flex-row justify-center gap-4">
-  <p>
-    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class:"underline hover:opacity-75", method: :post %>
+  <p class="leading-7 mb-10">
+    旅行好きの友人との間で交わされる<br>
+    「どこが美味しかった？」「おススメのお店を教えて」などのやりとり。<br>
+    いろいろシェアしたいけど、一つひとつ思い出して情報を伝えるのは少しめんどう。<br>
+    <span class="tracking-tighter sm:tracking-normal">もっと簡単に伝えられる方法があったらな。</span><br>
+    そんな思いから <span class="border-b-2 border-yellow-300 text-white md:text-lg">cocoitte</span> ができました。
   </p>
-  <p>
-  <%= link_to '管理者ゲストログイン（閲覧用）', users_admin_guest_sign_in_path, class:"underline hover:opacity-75", method: :post %>
+
+  <p class="mb-5 text-lg text-white font-bold">このアプリを使うと、、、</p>
+  <p class="leading-7 mb-5">
+    <span class="text-yellow-300 font-bold">・</span>訪問した複数のスポットを1つのページに表示。このページだけで情報シェアが完結します<br>
+    <span class="text-yellow-300 font-bold">・</span>各スポットで撮った写真のアップロードが可能です<br>
+    <span class="text-yellow-300 font-bold">・</span>リアルな感想をシェアできます<br>
+    <span class="text-yellow-300 font-bold">・</span>自分だけの旅行記録としても使えます<br>
   </p>
-</div>
+
+  <div class="w-28 mx-auto mb-5"><%= image_tag('airplane.png') %></div>
+
+  <div class="flex flex-col sm:flex-row justify-center gap-4">
+    <p>
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class:"underline hover:opacity-75", method: :post %>
+    </p>
+    <p>
+    <%= link_to '管理者ゲストログイン（閲覧用）', users_admin_guest_sign_in_path, class:"underline hover:opacity-75", method: :post %>
+    </p>
+  </div>
 
 </div>
