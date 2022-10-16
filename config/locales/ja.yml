@@ -72,8 +72,8 @@ ja:
       back: '戻る'
   favorites:
     index:
-      spot: 'スポット名称'
-      album: 'アルバム名'
+      spot: '名称'
+      album: 'アルバム'
       user: 'ユーザ'
       tag: 'タグ'
   notice:
