@@ -14,9 +14,16 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 mb-5">
     <% @users.each do |user| %>
       <div class= "min-h-36 p-5 mx-2 my-2 border border-gray-100 shadow-lg rounded-md text-sm">
-        <p class="h-14 w-14 md:h-28 md:w-28 mx-auto rounded-full object-contain"><%= image_tag user.image if user.image.attached? %></p>
+        <!-- <p class="h-14 w-14 md:h-28 md:w-28 mx-auto rounded-full object-contain"><%#= image_tag user.image if user.image.attached? %></p> -->
+        <% if user.image.attached? %>
+          <p class="h-14 w-14 md:h-28 md:w-28 mx-auto rounded-full object-contain">
+            <%= image_tag user.image %>
+          </p>
+        <% else %>
+        <p class="my-2.5 h-14 w-14 md:h-24 md:w-24 mx-auto rounded-full bg-gray-100"></p>
+        <% end %>
         <p class="text-base font-semibold mb-2"><%= link_to user.name, user, class:" underline hover:opacity-75" %></p>
-        <p class="break-all"><%= user.self_introduction %></p>
+        <p class="break-all truncate"><%= user.self_introduction %></p>
         <p class="mt-6">
           <span class="font-semibold bold border-b-2 text-sm border-yellow-300 mr-2 px-1"><%= t('.title') %></span>
           <% if user.albums.any? %>
