@@ -6,12 +6,13 @@ ja:
       user: ユーザ
     attributes:
       user:
-        name: 名前
+        name: ユーザ名
         email: メールアドレス
         current_password: 現在のパスワード
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+        self_introduction: プロフィール
       album:
         title: 旅行先
         visited_on: 訪問時期
