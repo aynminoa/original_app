@@ -7,9 +7,10 @@ class Spot < ApplicationRecord
   #ActiveStorage
   has_many_attached :images
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 60 }
   validates :address, presence: true
   validates :category, presence: true
+  validates :comment, length: { maximum: 200 }
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
