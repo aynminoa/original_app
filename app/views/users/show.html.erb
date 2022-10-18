@@ -30,31 +30,33 @@
     <% end %>
   </div>
 
-  <div class="text-left font-bold text-lg mb-2">
+  <div class="font-bold text-lg mb-2">
     <%= @user.name %>さんのアルバム</h3>
   </div>
     
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
     <% if @user.albums.any? %>
       <% @albums.each do |album| %>
-        <div class="h-40 mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
+        <div class="min-h-40 mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
           <% unless album.published %>
             <p class="h-7 bg-gray-300 rounded-tr-md rounded-tl-md text-xs sm:text-sm flex items-center justify-center">非公開</p>
           <% else %>
             <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md"></p>
           <% end %>
-          <p class="font-semibold my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
-          <p class=" mb-3"><i class="fa-solid fa-suitcase-rolling"></i><span class="ml-2"><%= album.visited_on.strftime("%Y年%m月") %></span></p>
-          <p class="flex justify-end space-x-4 pr-5">
-            <% if album.user == current_user %>
-              <%= link_to edit_album_path(album) do %>
-                <i class="fa-regular fa-pen-to-square fa-lg"></i>
+          <div class="sm:px-2 pb-3">
+            <p class="font-semibold my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
+            <p class=" mb-3"><i class="fa-solid fa-suitcase-rolling"></i><span class="ml-2"><%= album.visited_on.strftime("%Y年%m月") %></span></p>
+            <p class="flex justify-end space-x-4 pr-5">
+              <% if album.user == current_user %>
+                <%= link_to edit_album_path(album) do %>
+                  <i class="fa-regular fa-pen-to-square fa-lg"></i>
+                <% end %>
+                <%= link_to album_path(album, user_id: album.user_id), method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+                  <i class="fa-regular fa-trash-can fa-lg"></i>
+                <% end %>
               <% end %>
-              <%= link_to album_path(album, user_id: album.user_id), method: :delete, data: { confirm: '本当に削除しますか？' } do %>
-                <i class="fa-regular fa-trash-can fa-lg"></i>
-              <% end %>
-            <% end %>
-          </p>
+            </p>
+          </div>
         </div>
       <% end %>
     <% else %>
