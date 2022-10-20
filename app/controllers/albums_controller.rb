@@ -3,9 +3,11 @@ class AlbumsController < ApplicationController
   before_action :ensure_posted_user, only: %i[edit]
 
   def index
+    
+    @albums = Album.includes(:spots).where('address ilike ?', "%#{params[:title]}%").or(Album.includes(:spots).where('title ilike ?', "%#{params[:title]}%"))
+        
     guest = User.guest
     admin_guest = User.guest_admin
-    @albums = Album.where('title ilike ?', "%#{params[:title]}%").order(visited_on: :asc)
     if current_user == admin_guest
       @albums = @albums.includes(:user).where.not(user: {email: 'guest@example.com'})
     elsif current_user == guest

@@ -35,6 +35,10 @@ ja:
       search: '検索'
       back: '戻る'
   albums:
+    index:
+      input_title: '国名・エリア名を入力'
+      search_with_title: '国名・エリア名でアルバムを探す'
+      search: '検索'
     show:
       trip: '旅行'
       search_with_tag: 'タグで検索'
@@ -75,6 +79,7 @@ ja:
       spot: '名称'
       album: 'アルバム'
       user: 'ユーザ'
+      category: 'カテゴリ'
       tag: 'タグ'
   notice:
     created_album: アルバムを作成しました！
