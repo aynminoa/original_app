@@ -1,4 +1,4 @@
-<div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
+<div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-3/5 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
   <p class="text-lg lg:text-2xl font-semibold mb-5"><i class="fa-solid fa-location-dot mr-2"></i><%= t('.spot_show') %></p>
 
@@ -22,28 +22,28 @@
     </div>
 
     <div class="mb-2 md:flex md:flex-row">
-      <p class="mb-1 md:w-1/6 flex-none"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.category') %></span></p>
+      <p class="mb-1 md:w-1/6"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.category') %></span></p>
       <p><%= @spot.category %></p>
     </div>
 
     <div class="mb-2 md:flex md:flex-row">
-      <p class="mb-1 flex-none md:w-1/6"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.address') %></span></p>
-      <p class="grow"><%= @spot.address %></p>
+      <p class="mb-1 md:w-1/6"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.address') %></span></p>
+      <p class="break-all md:w-5/6"><%= @spot.address %></p>
     </div>
 
     <div class="mb-2 md:flex md:flex-row">
-      <p class="mb-1 md:w-1/6 flex-none"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.visited_on') %></span></p>
+      <p class="mb-1 md:w-1/6"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.visited_on') %></span></p>
       <p><%= @spot.visited_on %></p>
     </div>
 
     <div class="mb-2 md:flex md:flex-row">
-      <p class="mb-1 md:w-1/6 flex-none"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.url') %></span></p>
-      <p><%= link_to @spot.url, @spot.url, class: "underline text-blue-900 hover:opacity-75", target: '_blank' %></p>
+      <p class="mb-1 md:w-1/6"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.url') %></span></p>
+      <p class="break-all md:w-5/6"><%= link_to @spot.url, @spot.url, class: "underline text-blue-900 hover:opacity-75", target: '_blank' %></p>
     </div>
 
     <div class="mb-2 md:flex md:flex-row">
-      <p class="mb-1 flex-none md:w-1/6"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.comment') %></span></p>
-      <p class="break-all grow"><%= @spot.comment %></p>
+      <p class="mb-1 md:w-1/6"><span class="font-semibold border-b-2 border-yellow-300 px-1 mr-5"><%= t('.comment') %></span></p>
+      <p class="break-all md:w-5/6"><%= @spot.comment %></p>
     </div>
   </div>
 
@@ -96,7 +96,7 @@
   ></script>
   <style type="text/css">
     #map {
-      min-height: 270px;
+      min-height: 320px;
       min-width: 270px;
       background-color: #EEEEEE;
     }

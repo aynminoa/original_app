@@ -4,7 +4,7 @@
 
 
   <% if @user.image.attached? %>
-    <div class="flex justify-center items-center mb-5">
+    <div class="flex justify-center items-center mb-8">
       <%= image_tag @user.image, size: '100x100' %>
     </div>
   <% else %>
@@ -37,15 +37,15 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
     <% if @user.albums.any? %>
       <% @albums.each do |album| %>
-        <div class="min-h-40 mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
+        <div class="mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
           <% unless album.published %>
             <p class="h-7 bg-gray-300 rounded-tr-md rounded-tl-md text-xs sm:text-sm flex items-center justify-center">非公開</p>
           <% else %>
             <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md"></p>
           <% end %>
           <div class="sm:px-2 pb-3">
-            <p class="font-semibold my-3 underline hover:opacity-75"><%= link_to album.title, album %></p>
-            <p class=" mb-3"><i class="fa-solid fa-suitcase-rolling"></i><span class="ml-2"><%= album.visited_on.strftime("%Y年%m月") %></span></p>
+            <p class="font-semibold my-3"><%= link_to album.title, album, class:"hover:underline hover:opacity-75" %></p>
+            <p class="mb-3"><i class="fa-solid fa-suitcase-rolling"></i><span class="ml-2"><%= album.visited_on.strftime("%Y年%m月") %></span></p>
             <p class="flex justify-end space-x-4 pr-5">
               <% if album.user == current_user %>
                 <%= link_to edit_album_path(album) do %>

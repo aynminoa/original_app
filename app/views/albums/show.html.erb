@@ -1,11 +1,11 @@
-<div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-1/2 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
+<div class="container mx-auto text-center text-sm lg:text-base w-4/5 lg:w-3/5 bg-white my-14 px-4 md:px-8 py-8 rounded-md shadow-md">
 
   <p class="bg-gray-300 mb-4">
     <% unless @album.published %>
     非公開
     <% end %>
   </p>
-  <p class="text-lg lg:text-2xl font-semibold mb-5">
+  <p class="text-lg lg:text-2xl font-semibold mb-8">
     <i class="fa-solid fa-suitcase-rolling mr-2"></i><%= @album.user.name %>さんの<%= @album.title %><%= t('.trip') %><br class="sm:hidden">（<%= @album.visited_on.strftime("%Y年%m月") %>）
   </p>
 
@@ -29,16 +29,16 @@
     <tbody class="border-b border-dashed">
       <% @spots.each do |spot| %>
         <tr class="spot_row border-b border-dashed">
-          <td class="underline hover:opacity-75 py-1 pr-2 sm:pr-5">
+          <td class="hover:underline hover:opacity-75 py-1 pr-2 sm:pr-5">
             <%= link_to spot.name, spot_path(spot, user_id: current_user.id) %></td>
           <td class="py-1 pr-1 sm:pr-5"><%= spot.category %></td>
-          <td class="flex flex-col text-xs sm:text-base pr-1 sm:pr-5">
+          <td class="flex flex-col md:flex-row md:gap-2 text-xs sm:text-base pr-1 sm:pr-10">
             <% spot.tags.each do |tag| %>
             <span class="inline-block"><%= tag.name %></span>
             <% end %>
           </td>
 
-          <td class="pr-1 sm:pr-5">
+          <td class="pr-1">
             <div id="spot_<%= spot.id %>">
             <%= render partial: 'favorites/favorite', locals: { spot: spot,
             favorite: current_user.favorites.find_by(spot_id: spot) } %>
@@ -63,11 +63,11 @@
   </table>
 
 
-  <div id="map" class="h-100 w-100 flex items-center justify-center">スポットがまだ登録されていません</div>
+  <div id="map" class="flex items-center justify-center">スポットがまだ登録されていません</div>
 
   <style>
     #map{
-      min-height: 270px;
+      min-height: 320px;
       min-width: 270px;
       background-color: #EEEEEE;
   }
