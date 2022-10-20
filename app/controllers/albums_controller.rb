@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
 
   def index
     
-    @albums = Album.includes(:spots).where('address ilike ?', "%#{params[:title]}%").or(Album.includes(:spots).where('title ilike ?', "%#{params[:title]}%"))
+    @albums = Album.includes(:spots).where('address ilike ?', "%#{params[:title]}%").or(Album.includes(:spots).where('title ilike ?', "%#{params[:title]}%")).published.order(visited_on: :asc)
         
     guest = User.guest
     admin_guest = User.guest_admin
