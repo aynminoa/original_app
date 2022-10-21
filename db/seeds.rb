@@ -85,7 +85,7 @@ Spot.create!(
   [
     {
       name: '好記擔仔麵',
-      address: '台湾 台北市 中山区 Jilin Road',
+      address: '台湾 台北市 中山区 Jilin Road, 好記擔仔麵',
       visited_on: '2022-10-05',
       url: 'https://www.taipeinavi.com/food/39/',
       comment: '2人分で4,000円そこそこ。コスパ良い。',
@@ -94,7 +94,7 @@ Spot.create!(
     },
     {
       name: '鼎泰豐',
-      address: '台湾 台北市 大安区 信義路二段194號',
+      address: '台湾 台北市 中正区 Section 2nd, Xinyi Road, 鼎泰豐 新生店',
       visited_on: '2022-10-15',
       url: 'https://www.dintaifung.com.tw/jp/index.php',
       comment: 'さすが有名店。小籠包以外も美味しい。',
@@ -112,7 +112,7 @@ Spot.create!(
     },
     {
       name: '好奇營養豆花',
-      address: '台北市中山區北安路539-2號',
+      address: '台湾 台北市 士林区 徳行東路 好奇營養豆花',
       visited_on: '2022-10-10',
       url: 'https://www.facebook.com/profile.php?id=100064072153155',
       comment: 'マンゴーかき氷はこの店が最高！',
@@ -139,7 +139,7 @@ Spot.create!(
     },
     {
       name: 'Blenz Coffee',
-      address: '508 W Hastings St, Vancouver, BC V6B 1L6',
+      address: 'Blenz Coffee, ロブソン通り バンクーバー ブリティッシュコロンビア州 カナダ',
       visited_on: '2022-08-02',
       url: 'https://blenz.com/',
       comment: 'フードやスイーツも充実していて、休憩にピッタリ。',
@@ -148,7 +148,7 @@ Spot.create!(
     },
     {
       name: 'Jang Mo Jib Korean Restaurant',
-      address: 'Jang Mo Jib Korean Restaurant, ビュート・ストリート バンクーバー',
+      address: 'Jang Mo Jib Korean Restaurant, ビュート・ストリート バンクーバー ブリティッシュコロンビア州 カナダ',
       visited_on: '2022-08-03',
       url: 'https://www.jangmojibca.com/',
       comment: '本格的な韓国料理が食べられる。現地人も多く来ている。',
@@ -157,7 +157,7 @@ Spot.create!(
     },
     {
       name: 'グランビルアイランド',
-      address: 'Granville Island, Vancouver, BC V6H 3S',
+      address: 'カナダ ブリティッシュコロンビア州 バンクーバー グランビル・アイランド',
       visited_on: '2022-08-04',
       url: 'https://granvilleisland.com/',
       comment: 'いろいろな店があって楽しいけれど、いつも混んでいる。観光といえば、まずココ。',
@@ -166,7 +166,7 @@ Spot.create!(
     },
     {
       name: 'いただきます',
-      address: '北海道札幌市中央区南5条西5-1-6',
+      address: '日本、北海道札幌市中央区南５条西５丁目１−６ いただきます。',
       visited_on: '',
       url: 'https://xn--u8jf3af20ad.net/',
       comment: '肉が薄くて小さい。味もあまりない。他の店のほうがいいかも。',
@@ -175,7 +175,7 @@ Spot.create!(
     },
     {
       name: 'ソウルストア',
-      address: '北海道札幌市中央区南３条西７丁目３−２ F-DRESS7 BLD 2F',
+      address: '日本、北海道札幌市中央区南３条西７丁目３−４ ソウルストア',
       visited_on: '2022-04-01',
       url: 'https://soulstore.info/',
       comment: '開店前から並んだほうがいい。スープカレーの常識を覆す。',
@@ -184,9 +184,9 @@ Spot.create!(
     },
     {
       name: '六花亭',
-      address: '北海道札幌市中央区北4条西6丁目3-3',
+      address: '日本、北海道札幌市中央区北４条西６丁目３−３ 六花亭 札幌本店',
       visited_on: '2022-04-03',
-      url: 'https://www.rokkatei.co.jp/facilities/%E6%9C%AD%E5%B9%8C%E6%9C%AC%E5%BA%97-9/',
+      url: 'https://www.rokkatei.co.jp',
       comment: 'カフェで六花亭のスイーツが食べられる。店内もかわいい。',
       category: 'カフェ',
       album_id: albums[2].id,
