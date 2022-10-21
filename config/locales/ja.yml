@@ -82,14 +82,14 @@ ja:
       category: 'カテゴリ'
       tag: 'タグ'
   notice:
-    created_album: アルバムを作成しました！
-    updated_album: アルバムを更新ました！
-    destroyed_album: アルバムを削除ました！
+    created_album: 'アルバムを作成しました！'
+    updated_album: 'アルバムを更新しました！'
+    destroyed_album: 'アルバムを削除しました！'
     access_denied: 'アクセス権限がありません'
-    created_spot: スポットを作成しました！
-    updated_spot: スポットを更新ました！
-    destroyed_spot: スポットを削除ました！
-    destroyed_user: ユーザを削除ました！
+    created_spot: 'スポットを作成しました！'
+    updated_spot: 'スポットを更新しました！'
+    destroyed_spot: 'スポットを削除しました！'
+    destroyed_user: 'ユーザを削除しました！'
 
   date:
     abbr_day_names:
