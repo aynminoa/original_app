@@ -37,7 +37,7 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
     <% if @user.albums.any? %>
       <% @albums.each do |album| %>
-        <div class="mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
+        <div class="sm:h-40 mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
           <% unless album.published %>
             <p class="h-7 bg-gray-300 rounded-tr-md rounded-tl-md text-xs sm:text-sm flex items-center justify-center">非公開</p>
           <% else %>

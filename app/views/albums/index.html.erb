@@ -12,7 +12,7 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10">
     <% @albums.each do |album| %>
-      <div class="mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
+      <div class="sm:h-40 mb-5 mx-2 shadow-lg rounded-md text-sm sm:text-base">
         <p class="h-7 bg-yellow-300 rounded-tr-md rounded-tl-md"></p>
         <div class="sm:px-2 pb-3">
           <p class="font-semibold my-3"><%= link_to album.title, album, class:" hover:opacity-75 hover:underline" %></p>
