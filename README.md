@@ -10,13 +10,14 @@
 ****
 * devise
 * AWS
-* お気に入り機能
+* お気に入り機能（Ajax）
 <br>
 
 **カリキュラム外の技術**
 ****
 * geocoder（Google Mapの活用）
-* Active Storage
+* ActiveStorage
+* Tailwind CSS
 <br>
 
 **実行手順**
