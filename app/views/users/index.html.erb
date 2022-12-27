@@ -13,15 +13,15 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 mb-5">
     <% @users.each do |user| %>
-      <div class= "min-h-36 p-5 mx-2 my-2 border border-gray-100 shadow-lg rounded-md text-sm">
+      <%= link_to user, class:"hover:opacity-75 min-h-36 p-5 mx-2 my-2 border border-gray-100 shadow-lg rounded-md text-sm" do %>
         <% if user.image.attached? %>
           <p class="mt-2.5 mb-4">
             <%= image_tag user.image, class:"h-20 w-20 md:h-24 md:w-24 mx-auto rounded-full object-cover" %>
           </p>
         <% else %>
-        <p class="mt-2.5 mb-4 h-20 w-20 md:h-24 md:w-24 mx-auto rounded-full bg-gray-100"></p>
+          <p class="mt-2.5 mb-4 h-20 w-20 md:h-24 md:w-24 mx-auto rounded-full bg-gray-100"></p>
         <% end %>
-        <p class="text-base font-semibold mb-2"><%= link_to user.name, user, class:"hover:underline hover:opacity-75" %></p>
+        <p class="text-base font-semibold mb-2"><%= user.name %></p>
         <p class="break-all truncate"><%= user.self_introduction %></p>
         <p class="mt-6">
           <span class="font-semibold bold border-b-2 text-sm border-yellow-300 mr-2 px-1"><%= t('.title') %></span>
@@ -32,10 +32,10 @@
               <% end %>
             <% end %>
           <% else %>
-          まだアルバムがありません。
+            まだアルバムがありません。
           <% end %>
         </p>
-      </div>
+      <% end %>
     <% end %>
   </div>
 
